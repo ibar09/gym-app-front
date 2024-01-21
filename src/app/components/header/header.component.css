@@ -1,0 +1,38 @@
+.nav-header {
+  background-color: #000000;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsl(0, 84%, 39%) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsl(0, 0%, 11%) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgb(47, 47, 52) 0, transparent 50%);
+}
+.navbar {
+  background-color: #000000;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsl(0, 29%, 17%) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsl(0, 0%, 11%) 0, transparent 50%),
+    radial-gradient(at 100% 0%, rgb(47, 47, 52) 0, transparent 50%);
+}
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .button {
+    
+    background-color: #960101;
+    color: #ececec;
+    border: 1px solid #960101;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #e9242e;
+    color: #fff;
+  }
+  .link{
+    font-size: 18px;
+}

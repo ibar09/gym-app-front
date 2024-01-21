@@ -1,0 +1,42 @@
+/* choose-us.component.css */
+
+.bg-3 {
+    background-color: #030303; /* Replace with your desired background color */
+    color: #ffffff; /* Replace with your desired text color */
+  }
+  
+  .choose-case {
+    padding: 20px;
+    text-align: center;
+    background-color: transparent; 
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #d93434;
+  }
+  
+  .case-border {
+    /* Red border color * /* Rounded shape */
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+.text-left {
+    text-align: left;
+}
+.title {
+    font-size:20px;
+}
+  
+.bg-3{
+    background-color: #000000;
+    background-image: radial-gradient(
+        at 0% 0%,
+        hsl(0, 0%, 0%) 0,
+        transparent 50%
+      ),
+      radial-gradient(at 50% 0%, hsl(0, 3%, 13%) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgb(14, 14, 15) 0, transparent 50%);
+  }
