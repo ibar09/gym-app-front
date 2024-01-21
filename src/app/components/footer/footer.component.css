@@ -1,0 +1,17 @@
+.footer {
+    background-color: #390202;
+    background-image: radial-gradient(
+        at 0% 0%,
+        hsl(0, 0%, 0%) 0,
+        transparent 50%
+      ),
+      radial-gradient(at 50% 0%, hsl(0, 0%, 0%) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgb(6, 6, 6) 0, transparent 50%);
+  }
+
+.link{
+    font-size: 20px;
+}
+.cursor-pointer {
+    cursor: pointer;
+  }
