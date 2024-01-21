@@ -1,0 +1,79 @@
+/* dashboard.component.css */
+
+.dashboard-box {
+  display: flex;
+}
+.dashboard-container {
+    height: 100vh; /* Set the height as needed */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  height:90vh;
+  background: transparent;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(244, 2, 2, 0.522);
+backdrop-filter: blur(12.9px);
+-webkit-backdrop-filter: blur(12.9px);
+border: 1px solid rgba(51, 51, 51, 0.3);
+  text-align: center;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+  line-height: 7;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.orders-table,
+.training-program-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.orders-table th,
+.orders-table td,
+.training-program-table th,
+.training-program-table td {
+  border: 1px solid #c90000;
+  padding: 8px;
+  text-align: center;
+}
+
+.orders-table th,
+.training-program-table th {
+  background-color: #a80707;
+}
+
+/* Optional: Adjustments for responsiveness */
+@media (max-width: 768px) {
+  .dashboard-box {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

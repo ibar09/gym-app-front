@@ -1,0 +1,72 @@
+<!-- dashboard.component.html -->
+<app-header></app-header>
+<div class="dashboard-container" [ngStyle]="{ 'background-image': 'url(assets/hero.jpg)' }">
+    <div class="dashboard-box">
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <img src="assets/avatar.png" alt="Profile Image" class="profile-image">
+        <ul class="sidebar-links text-white fw-bolder">
+          <li><a (click)="navigateTo('profileSettings')">Profile Settings</a></li>
+          <li><a (click)="navigateTo('orders')">My Orders</a></li>
+          <li><a (click)="navigateTo('trainingProgram')">Training Program</a></li>
+        </ul>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+  
+       <!-- dashboard.component.html -->
+
+<div class="section" *ngIf="selectedSection === 'orders'">
+    <h3 class="text-white text-center fw-bolder">Your Orders</h3>
+    <table class="orders-table text-white text-center">
+      <tr>
+        <th>Order ID</th>
+        <th>Items</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+      <!-- Replace with actual order data -->
+      <tr *ngFor="let order of orders" class="text-white">
+        <td>{{ order.orderID }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let item of order.items">{{ item.quantity }} * {{ item.name }}</li>
+          </ul>
+        </td>
+        <td>{{ order.amount }}</td>
+        <td>{{ order.date }}</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+  
+  
+        <!-- Training Program Section -->
+      <!-- dashboard.component.html -->
+
+<div class="section" *ngIf="selectedSection === 'trainingProgram'">
+    <h3 class="text-white text-center fw-bolder">Your Training Program</h3>
+    <table class="training-program-table text-white">
+      <tr>
+        <th>Date</th>
+        <th>Exercise</th>
+      </tr>
+      <!-- Replace with actual training program data -->
+      <tr *ngFor="let program of trainingProgram">
+        <td>{{ program.date }}</td>
+        <td>{{ program.exercise }}</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+  
+            <!-- Add more rows as needed -->
+          
+        </div>
+      </div>
+  
+    </div>
+  
+  
