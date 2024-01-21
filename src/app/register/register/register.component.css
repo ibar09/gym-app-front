@@ -1,0 +1,52 @@
+/* register.component.css */
+
+.register-container {
+    height: 120vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .register-box {
+    background: rgba(255, 255, 255, 0.7);background: rgba(51, 51, 51, 0.79);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    border: 1px solid rgba(51, 51, 51, 0.3);
+    padding: 60px;
+    text-align: center;
+    width: 500px;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .form-group {
+    margin-bottom: 30px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .btn-primary {
+    background-color: #940000; 
+    color: #ffffff;
+    padding: 1px 60px;
+    font-size: 20px;
+    
+  }
+  
+  /* Optional: Adjustments for responsiveness */
+  @media (max-width: 768px) {
+    .register-box {
+      width: 80%;
+    }
+  }
+  

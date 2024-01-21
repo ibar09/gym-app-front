@@ -10,6 +10,9 @@ import { HeroComponent } from './components/hero/hero.component';
 import { ChooseUsComponent } from './components/choose-us/choose-us.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ProductCardComponent } from './marketplace/product-card/product-card.component';
+import { LoginComponent } from './login/login/login.component';
+import { RegisterComponent } from './register/register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     HeroComponent,
     ChooseUsComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

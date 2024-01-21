@@ -1,0 +1,38 @@
+<!-- register.component.html -->
+<app-header></app-header>
+<div class="register-container" [ngStyle]="{ 'background-image': 'url(assets/download.jpg)' }">
+    <div class="register-box">
+      <h2 class="text-white">Register</h2>
+      <div class="form-group">
+        <label for="name" class="text-white">Name:</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="lastname" class="text-white">Last Name:</label>
+        <input type="text" id="lastname" class="form-control" placeholder="Enter your last name">
+      </div>
+      <div class="form-group">
+        <label for="age" class="text-white">Age:</label>
+        <input type="number" id="age" class="form-control" placeholder="Enter your age">
+      </div>
+      <div class="form-group">
+        <label for="phone" class="text-white">Phone Number:</label>
+        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+      </div>
+      <div class="form-group">
+        <label for="email" class="text-white">Email:</label>
+        <input type="email" id="email" class="form-control" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="password" class="text-white">Password:</label>
+        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+      </div>
+      <div class="form-group">
+        <label for="profilePhoto" class="text-white">Profile Photo:</label>
+        <input type="file" id="profilePhoto" class="form-control-file">
+      </div>
+      <button class="btn btn-primary">Register</button>
+      <p class="text-white mt-3">Already a member? <a href="#">Login Now</a></p>
+    </div>
+  </div>
+  

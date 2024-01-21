@@ -1,0 +1,50 @@
+/* login.component.css */
+
+.login-container {
+    height: 90vh; /* Full height of the viewport */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-box {
+   /* From https://css.glass */
+background: rgba(51, 51, 51, 0.79);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(12.9px);
+-webkit-backdrop-filter: blur(12.9px);
+border: 1px solid rgba(51, 51, 51, 0.3);
+        padding: 60px;
+    text-align: center;
+    width:400px;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  
+  .form-group {
+    margin-bottom: 30px;
+  }
+  
+  .btn-primary {
+    background-color: #940000; /* Bootstrap primary color */
+    color: #ffffff;
+    padding: 1px 60px; /* Increased padding for the button */
+    font-size: 20px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #000000; /* Darker color on hover */
+  }
+  
+  /* Optional: Adjustments for responsiveness */
+  @media (max-width: 768px) {
+    .login-box {
+      width: 80%; /* Adjust the width for smaller screens */
+    }
+  }
+  
