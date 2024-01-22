@@ -7,6 +7,7 @@
     ),
     radial-gradient(at 50% 0%, hsl(0, 0%, 11%) 0, transparent 50%),
     radial-gradient(at 100% 0%, rgb(47, 47, 52) 0, transparent 50%);
+    height: 90px;
 }
 .navbar {
   background-color: #000000;
@@ -18,9 +19,7 @@
     radial-gradient(at 50% 0%, hsl(0, 0%, 11%) 0, transparent 50%),
     radial-gradient(at 100% 0%, rgb(47, 47, 52) 0, transparent 50%);
 }
-  .cursor-pointer {
-    cursor: pointer;
-  }
+  
   .button {
     
     background-color: #960101;

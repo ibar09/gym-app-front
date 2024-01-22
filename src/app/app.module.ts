@@ -14,6 +14,8 @@ import { ProductCardComponent } from './marketplace/product-card/product-card.co
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { UseraccountComponent } from './user/useraccount/useraccount.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UseraccountComponent } from './user/useraccount/useraccount.component';
     BrowserModule,
     AppRoutingModule,
     MarketplaceModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

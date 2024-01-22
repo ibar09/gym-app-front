@@ -2,6 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 .red-text {
     color: #ff0000; 
   }
@@ -11,4 +12,7 @@ body {
     font-family: 'bebas-neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  .cursor-pointer {
+    cursor: pointer;
   }
