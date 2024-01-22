@@ -5,10 +5,11 @@ import { ProductCardComponent } from './marketplace/product-card/product-card.co
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { UseraccountComponent } from './user/useraccount/useraccount.component';
+import { MarketplaceComponent } from './marketplace/marketplace/marketplace.component';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
-  { path:"marketplace", component:ProductCardComponent},
+  { path:"marketplace", component:MarketplaceComponent},
   { path:"login", component:LoginComponent},
   { path:"register", component:RegisterComponent},
   {path:"my-account", component:UseraccountComponent}

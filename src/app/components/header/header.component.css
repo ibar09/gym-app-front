@@ -34,5 +34,15 @@
     color: #fff;
   }
   .link{
+    color:white;
     font-size: 18px;
+}
+.link:hover{
+  color: #e9242e;
+}
+.fa-2xl{
+  color: white; margin-right: 8%;
+}
+.fa-2xl:hover{
+  color: #e9242e;
 }

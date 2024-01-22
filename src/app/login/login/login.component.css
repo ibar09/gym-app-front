@@ -47,4 +47,10 @@ border: 1px solid rgba(51, 51, 51, 0.3);
       width: 80%; /* Adjust the width for smaller screens */
     }
   }
-  
+
+  .invalid {
+    border: 1px solid red;
+  }
+  small{
+    color: red;
+  }
