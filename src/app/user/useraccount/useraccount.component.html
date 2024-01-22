@@ -1,11 +1,11 @@
-<!-- dashboard.component.html -->
-<app-header></app-header>
+
 <div class="dashboard-container" [ngStyle]="{ 'background-image': 'url(assets/hero.jpg)' }">
     <div class="dashboard-box">
   
       <!-- Sidebar -->
       <div class="sidebar">
         <img src="assets/avatar.png" alt="Profile Image" class="profile-image">
+        <h5>{{user.name}}</h5>
         <ul class="sidebar-links text-white fw-bolder">
           <li><a (click)="navigateTo('profileSettings')">Profile Settings</a></li>
           <li><a (click)="navigateTo('orders')">My Orders</a></li>
@@ -17,7 +17,7 @@
       <div class="main-content">
   
        <!-- dashboard.component.html -->
-
+       <button class="btn btn-primary button" (click)="app.logOut()" routerLink="my-account">My account</button>
 <div class="section" *ngIf="selectedSection === 'orders'">
     <h3 class="text-white text-center fw-bolder">Your Orders</h3>
     <table class="orders-table text-white text-center">
