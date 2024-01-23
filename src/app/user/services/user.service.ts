@@ -21,24 +21,30 @@ export class UserService {
     return this.http.get<User>(userEndpoints.findByEmail+email);
   }
 
-  // Retrieve a single User by ID
+ 
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(userEndpoints.findById+userId.toString());
   }
 
-  // Add a new product
   addUser(user: User): Observable<User> {
     return this.http.post<User>(userEndpoints.add, user);
   }
 
-  // Update an existing User
   updateUser(userId: number, updatedUser: User): Observable<User> {
     return this.http.put<User>(userEndpoints.update+userId.toString(), updatedUser);
   }
 
-  // Delete a User
   deleteUser(userId: number): Observable<void> {
  
     return this.http.delete<void>(userEndpoints.delete+userId.toString());
+  }
+
+  uploadUserPhoto(file:File){
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(userEndpoints.upload,formData);
+  }
+  getUserImage(imageName: string){
+      return this.http.get<any>(userEndpoints.getImage+imageName);
   }
 }
