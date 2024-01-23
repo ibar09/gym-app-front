@@ -4,8 +4,14 @@
   
       <!-- Sidebar -->
       <div class="sidebar">
-        <img src="assets/avatar.png" alt="Profile Image" class="profile-image">
-        <h5>{{user.name}}</h5>
+        <div class="photo-panel">
+          <div class="image-container">
+        <img [src]="imageUrl" alt="Profile Image" class="profile-image">
+      </div>
+      <input type="file"  (change)="onFileSelected($event)" class="upload-input" title="Upload Photo" />
+      
+      </div>
+        <h5>{{user?.name}}</h5>
         <ul class="sidebar-links text-white fw-bolder">
           <li><a (click)="navigateTo('profileSettings')">Profile Settings</a></li>
           <li><a (click)="navigateTo('orders')">My Orders</a></li>
@@ -17,7 +23,7 @@
       <div class="main-content">
   
        <!-- dashboard.component.html -->
-       <button class="btn btn-primary button" (click)="app.logOut()" routerLink="my-account">My account</button>
+       <button class="btn btn-primary button" (click)="app.logOut()" routerLink="my-account">Log out</button>
 <div class="section" *ngIf="selectedSection === 'orders'">
     <h3 class="text-white text-center fw-bolder">Your Orders</h3>
     <table class="orders-table text-white text-center">

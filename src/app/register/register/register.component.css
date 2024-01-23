@@ -42,7 +42,12 @@
     font-size: 20px;
     
   }
-  
+  .invalid {
+    border: 1px solid red;
+  }
+  small{
+    color: red;
+  }
   /* Optional: Adjustments for responsiveness */
   @media (max-width: 768px) {
     .register-box {

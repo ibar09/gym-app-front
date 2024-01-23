@@ -7,4 +7,6 @@ export const userEndpoints ={
     update:constants.url+'user/',
     delete:constants.url+'user/',
     findById:constants.url+'user/',
+    upload:constants.url+'user/upload',
+    getImage:constants.url+'user/profile-image/'
 }

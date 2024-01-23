@@ -6,13 +6,14 @@ import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { UseraccountComponent } from './user/useraccount/useraccount.component';
 import { MarketplaceComponent } from './marketplace/marketplace/marketplace.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
   { path:"marketplace", component:MarketplaceComponent},
   { path:"login", component:LoginComponent},
   { path:"register", component:RegisterComponent},
-  {path:"my-account", component:UseraccountComponent}
+  {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
