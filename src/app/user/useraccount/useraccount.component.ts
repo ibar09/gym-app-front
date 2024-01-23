@@ -13,12 +13,12 @@ import { GlobalApp } from 'src/app/common/global';
   styleUrls: ['./useraccount.component.css']
 })
 export class UseraccountComponent implements OnInit{
-  
+  display: string;
   selectedSection: 'orders' | 'trainingProgram' | 'profileSettings' = "orders";
   constructor(private router: Router,
               private userService: UserService,
               public app:GlobalApp) {
-                
+                this.display="none";
               }
 
   user!:User;
@@ -36,7 +36,6 @@ export class UseraccountComponent implements OnInit{
           
         }
       )
-      
     }
     else
     {
@@ -87,5 +86,18 @@ toggleEditable(field: string): void {
   console.log("edit");
 }
 
+
+onSubmit() {
+  
+      this.openModal();
+      
+}
+
+openModal() {
+this.display = "block";
+}
+onCloseHandled() {
+this.display = "none";
+}
 
 }
