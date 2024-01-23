@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../types/product.interface';
 import { SerachResult } from 'src/app/common/types/searchResult';
 import { productEndpoints } from '../types/product-endpoints.interface';
+import { SerachRequest } from 'src/app/common/types/searchRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   // Retrieve all products
-  getProducts(): Observable<SerachResult<Product>> {
-    return this.http.get<SerachResult<Product>>(productEndpoints.findAll);
+  getProducts(searchRequest:SerachRequest): Observable<SerachResult<Product>> {
+    return this.http.get<SerachResult<Product>>(productEndpoints.findAll,{params: {page : searchRequest.page,limit:searchRequest.limit}});
   }
 
   // Retrieve a single product by ID

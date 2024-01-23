@@ -1,0 +1,31 @@
+.column{
+    margin-bottom: 15px;
+    margin: 25px;
+}
+
+button
+{
+    background-color: white;
+    color: #c42a00;
+}
+
+button:focus,
+button:hover,
+span:focus,
+span:hover
+{
+    color: #ffffff;
+    background-color: #eee;
+    border-color: #ddd;
+}
+.selected{
+    background-color: #c42a00 !Important;
+    color: #ffffff;
+}
+
+
+button:hover
+{
+    background-color: #c42a00 !Important;
+    border: solid 1px #c42a00;
+}

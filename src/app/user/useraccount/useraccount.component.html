@@ -1,14 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-<!-- dashboard.component.html -->
-<app-header></app-header>
+
 <div class="dashboard-container" [ngStyle]="{ 'background-image': 'url(assets/hero.jpg)' }">
     <div class="dashboard-box">
   
       <!-- Sidebar -->
       <div class="sidebar">
         <img src="assets/avatar.png" alt="Profile Image" class="profile-image">
-        <p class="text-white fw-bold"> {{ user.firstName }}</p>
+        <h5>{{user.name}}</h5>
         <ul class="sidebar-links text-white fw-bolder">
           <li><a class="cursor-pointer red-text fw-bold" (click)="navigateTo('profileSettings')">Profile Settings</a></li>
           <li><a  class="cursor-pointer red-text fw-bold" (click)="navigateTo('orders')">My Orders</a></li>
@@ -35,8 +34,8 @@
         <div class="form-group">
           <label for="firstName" class="text-white text-center fw-bold">First Name</label>
           <div class="input-group">
-            <input type="text" id="firstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['firstName']">
-            <span class="input-group-text cursor-pointer" (click)="toggleEditable('firstName')">
+            <input type="text" id="firstName" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['name']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('name')">
               <i class="fas fa-pencil-alt"></i>
             </span>
           </div>
@@ -72,6 +71,26 @@
             </span>
           </div>
         </div>
+
+        <div class="form-group">
+            <label for="phoneNumber" class="text-white text-center fw-bold">PhoneNumber</label>
+            <div class="input-group">
+              <input type="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['phoneNumber']">
+              <span class="input-group-text cursor-pointer" (click)="toggleEditable('phoneNumber')">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address" class="text-white text-center fw-bold">address</label>
+            <div class="input-group">
+              <input type="address" id="address" [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['address']">
+              <span class="input-group-text cursor-pointer" (click)="toggleEditable('address')">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </div>
+          </div>
   
         <div class="form-group">
           <label for="password" class="text-white text-center fw-bold">Password</label>
@@ -93,14 +112,9 @@
 
       <!-- Main Content -->
       <div class="main-content">
-
-       <!-- dashboard.component.html -->
-
-
-  
   
        <!-- dashboard.component.html -->
-
+       <button class="btn btn-primary button" (click)="logoutandnavigateToHome()" routerLink="my-account">Logout</button>
 <div class="section" *ngIf="selectedSection === 'orders'">
     <h3 class="text-white text-center">Your Orders</h3>
     <table class="orders-table text-white text-center">

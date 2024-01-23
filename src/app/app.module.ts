@@ -14,8 +14,12 @@ import { ProductCardComponent } from './marketplace/product-card/product-card.co
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { UseraccountComponent } from './user/useraccount/useraccount.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { AuthInterceptor, AuthentificationInterceptorProvider } from './auth/interceptors/auth.interceptor';
+import { GlobalApp } from './common/global';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -34,10 +38,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MarketplaceModule,
     HttpClientModule,
-    NgbModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [AuthentificationInterceptorProvider,GlobalApp],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

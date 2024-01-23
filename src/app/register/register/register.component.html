@@ -1,5 +1,4 @@
-<!-- register.component.html -->
-<app-header></app-header>
+
 <div class="register-container" [ngStyle]="{ 'background-image': 'url(assets/download.jpg)' }">
     
     <div class="register-box">
@@ -33,7 +32,7 @@
         <input type="file" id="profilePhoto" class="form-control-file">
       </div>
       <button class="btn btn-primary">Register</button>
-      <p class="text-white mt-3">Already a member? <a href="#">Login Now</a></p>
+      <p class="text-white mt-3">Already a member? <a routerLink="/login">Login Now</a></p>
     </div>
   </div>
   
