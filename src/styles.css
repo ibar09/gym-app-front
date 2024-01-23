@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 .red-text {
     color: #ff0000; 
   }
@@ -42,3 +43,6 @@ body {
     background-color: #c42a00 !Important;
     border: solid 1px #c42a00;
 }
+  .cursor-pointer {
+    cursor: pointer;
+  }

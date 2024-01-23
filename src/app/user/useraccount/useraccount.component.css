@@ -4,7 +4,7 @@
   display: flex;
 }
 .dashboard-container {
-    height: 100vh; /* Set the height as needed */
+    height: 150vh; /* Set the height as needed */
     background-size: cover;
     background-position: center;
     position: relative;
@@ -13,7 +13,7 @@
 .sidebar {
   width: 200px;
   padding: 20px;
-  height:90vh;
+  height:150vh;
   background: transparent;
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(244, 2, 2, 0.522);
@@ -37,7 +37,7 @@ border: 1px solid rgba(51, 51, 51, 0.3);
 
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 40px;
 }
 
 .orders-table,
@@ -72,6 +72,7 @@ border: 1px solid rgba(51, 51, 51, 0.3);
     margin-bottom: 20px;
   }
 }
+
 .photo-panel {
   position: relative;
   width: 80px;
@@ -118,3 +119,69 @@ border: 1px solid rgba(51, 51, 51, 0.3);
 .upload-label:hover {
   background-color: #7e0c0c;
 }
+
+.profile-box {
+    background: rgba(255, 255, 255, 0.7);
+    background: rgba(51, 51, 51, 0.79);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    border: 1px solid rgba(51, 51, 51, 0.3);
+    padding: 100px;
+    width: 450px;
+    margin-left: 375px;
+    margin-bottom: 15px;
+    margin-top: 40px;
+  }
+  .profile-container {
+    height: 90vh;    
+  }
+
+  .btn-primary {
+    background-color: #940000; 
+    color: #ffffff;
+    padding: 1px 40px;
+    font-size: 20px;
+    position:center;
+    
+  }
+  .profile-image2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    position: center;
+  }
+  .money-bag-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust as needed for spacing */
+    background-color: #ffffff; /* Background color for the box */
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .money-bag-box i {
+    font-size: 24px; /* Adjust as needed for icon size */
+    margin-right: 5px; /* Adjust as needed for spacing between icon and sales amount */
+  }
+  
+  .sales-amount {
+    font-size: 18px; /* Adjust as needed for sales amount font size */
+  }
+  .recharge-link {
+    display: block;
+    margin-top: 10px; /* Adjust as needed for spacing */
+    text-align: center;
+
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .recharge-link:hover {
+    text-decoration: underline;
+  }
+
+

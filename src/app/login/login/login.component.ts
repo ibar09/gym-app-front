@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { LoginData } from 'src/app/auth/types/login.data.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   display: string;
   loginMessage:string;
   loginButtonText:string;
-  constructor (private authService:AuthService){
+  constructor (private authService:AuthService,private Router:Router){
     this.user={email:'',
       password:''
     }
@@ -49,5 +50,8 @@ onCloseHandled() {
   this.display = "none";
 }
 
+navigateToMyAccount() {
+  this.Router.navigate(['my-account']);
+}
 
 }

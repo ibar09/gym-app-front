@@ -8,13 +8,14 @@ import { constants } from 'src/app/common/constants';
 import { userEndpoints } from '../types/user-endpoints.interface';
 
 
+
 @Component({
   selector: 'app-useraccount',
   templateUrl: './useraccount.component.html',
   styleUrls: ['./useraccount.component.css']
 })
 export class UseraccountComponent implements OnInit{
-  
+  display: string;
   selectedSection: 'orders' | 'trainingProgram' | 'profileSettings' = "orders";
   uploadedImage!: File;
   imageUrl!: string;
@@ -22,7 +23,7 @@ export class UseraccountComponent implements OnInit{
   constructor(private router: Router,
               private userService: UserService,
               public app:GlobalApp) {
-                
+                this.display="none";
               }
 
   
@@ -48,7 +49,6 @@ export class UseraccountComponent implements OnInit{
           
         }
       )
-      
     }
     else
     {
@@ -82,6 +82,10 @@ export class UseraccountComponent implements OnInit{
   }
   
 
+  logoutandnavigateToHome() {
+    this.app.logOut();
+    this.router.navigate(['']);
+  }
   //order example:
   orders = [
     {
@@ -99,4 +103,35 @@ export class UseraccountComponent implements OnInit{
   trainingProgram = [
     { date: '1-22-2024', exercise: ['Squats','push ups'] },
     { date: '1-23-2024', exercise: 'Push-ups' },
-]}
+];
+
+
+// Editable status for each field
+isEditable: { [key: string]: boolean } = {
+  firstName: false,
+  lastName: false,
+  age: false,
+  email: false,
+  password: false
+};
+
+toggleEditable(field: string): void {
+  this.isEditable[field] = !this.isEditable[field];
+  console.log("edit");
+}
+
+
+onSubmit() {
+  
+      this.openModal();
+      
+}
+
+openModal() {
+this.display = "block";
+}
+onCloseHandled() {
+this.display = "none";
+}
+
+}

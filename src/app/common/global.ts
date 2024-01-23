@@ -6,6 +6,6 @@ export class GlobalApp {
     public logOut()
     {
         localStorage.removeItem('token');
-        location.reload()
+        
     }
 }

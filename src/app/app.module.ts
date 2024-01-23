@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor, AuthentificationInterceptorProvider } from './auth/interceptors/auth.interceptor';
 import { GlobalApp } from './common/global';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MarketplaceModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [AuthentificationInterceptorProvider,GlobalApp],
   bootstrap: [AppComponent]
