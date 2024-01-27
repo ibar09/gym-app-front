@@ -19,6 +19,9 @@ import { AuthInterceptor, AuthentificationInterceptorProvider } from './auth/int
 import { GlobalApp } from './common/global';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TrainerCardComponent } from './trainers/trainer-card/trainer-card.component';
+import { TrainingComponent } from './trainers/training/training.component';
+import { TrainerListComponent } from './trainers/trainer-list/trainer-list.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomepageComponent,
     LoginComponent,
     RegisterComponent,
-    UseraccountComponent
+    UseraccountComponent,
+    TrainerCardComponent,
+    TrainingComponent,
+    TrainerListComponent
   ],
   imports: [
     BrowserModule,

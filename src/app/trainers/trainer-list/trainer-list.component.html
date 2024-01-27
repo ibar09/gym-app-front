@@ -1,0 +1,27 @@
+
+
+    
+    <div class="row min-height-100">
+        <div class="col-md-2 column" *ngFor=" let p of coachs">
+          <trainer-card [coach]="p"></trainer-card>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div><nav aria-label="..." style="float: right;">
+            <ul class="pagination">
+              <li class="page-item">
+                <button class="page-link" [ngClass]="(metaData['currentPage']<=1) ? 'disabled' : ''"  tabindex="-1" (click)="perviousPage()">Previous</button>
+              </li>
+              <li class="page-item" ><button class="page-link selected" >{{metaData['currentPage']}}</button></li>
+              <li class="page-item">
+                <button class="page-link" [ngClass]="(metaData['currentPage']+1>metaData['totalPages']) ? 'disabled' : ''">{{metaData['currentPage']+1}} <span class="sr-only">(current)</span></button>
+              </li>
+              <li class="page-item" [ngClass]="(metaData['currentPage']+2>=metaData['totalPages']) ? 'disabled' : ''"><button class="page-link" >{{metaData['currentPage']+2}}</button></li>
+              <li class="page-item">
+                <button class="page-link" [ngClass]="(metaData['currentPage']>=metaData['totalPages']) ? 'disabled' : ''" (click)="nextPage()">Next</button>
+              </li>
+            </ul>
+          </nav></div>
+    </div>
+  

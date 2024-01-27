@@ -7,13 +7,15 @@ import { RegisterComponent } from './register/register/register.component';
 import { UseraccountComponent } from './user/useraccount/useraccount.component';
 import { MarketplaceComponent } from './marketplace/marketplace/marketplace.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TrainingComponent } from './trainers/training/training.component';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
   { path:"marketplace", component:MarketplaceComponent},
   { path:"login", component:LoginComponent},
   { path:"register", component:RegisterComponent},
-  {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]}
+  {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]},
+  {path:"trainers",component:TrainingComponent},
 ];
 
 @NgModule({
