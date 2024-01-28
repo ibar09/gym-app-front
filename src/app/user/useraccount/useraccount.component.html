@@ -13,7 +13,7 @@
       <input type="file"  (change)="onFileSelected($event)" class="upload-input" title="Upload Photo" />
       
       </div>
-        <h5>{{user?.name}}</h5>
+        <h5>{{user ? user.name : ''}}</h5>
         <ul class="sidebar-links text-white fw-bolder">
           <li><a class="cursor-pointer red-text fw-bold" (click)="navigateTo('profileSettings')">Profile Settings</a></li>
           <li><a  class="cursor-pointer red-text fw-bold" (click)="navigateTo('orders')">My Orders</a></li>
