@@ -19,23 +19,23 @@ export class CoachService {
   }
 
   // Retrieve a single product by ID
-  getProductById(coachId: number): Observable<Coach> {
+  getCoachById(coachId: number): Observable<Coach> {
     return this.http.get<Coach>(coachEndpoints.findById+coachId.toString());
   }
 
   // Add a new product
-  addProduct(coach: Coach): Observable<Coach> {
+  addCoach(coach: Coach): Observable<Coach> {
     return this.http.post<Coach>(coachEndpoints.add, coach);
   }
 
   // Update an existing product
-  updateProduct(coachId: number, updatedCoach: Coach): Observable<Coach> {
+  updateCoach(coachId: number, updatedCoach: Coach): Observable<Coach> {
     return this.http.put<Coach>(coachEndpoints.update+coachId.toString(), updatedCoach);
   }
 
   // Delete a product
-  deleteProduct(productId: number): Observable<void> {
+  deleteCoach(coachId: number): Observable<void> {
  
-    return this.http.delete<void>(coachEndpoints.delete+productId.toString());
+    return this.http.delete<void>(coachEndpoints.delete+coachId.toString());
   }
 }
