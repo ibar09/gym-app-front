@@ -1,0 +1,42 @@
+<!-- invoice.component.html -->
+
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h5>Invoice</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h6>Item </h6>
+          </div>
+          <div class="col">
+            <h6>Total Amount</h6>
+          </div>
+        </div>
+  
+        <!-- Loop through items and display them -->
+        <div  class="row" *ngFor="let item of items">
+          <div class="col">
+            {{ item.name }} x {{item.amount}}
+          </div>
+          <div class="col">
+            {{ item.price*item.amount }} DT
+          </div>
+        </div>
+  
+        <hr>
+  
+        <!-- Display total number of items and total amount -->
+        <div class="row">
+          <div class="col">
+            <strong>Total Items:</strong> {{ getTotalItems() }}
+          </div>
+          <div class="col">
+            <strong>Total Amount:</strong> {{ getTotalAmount() }} DT
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

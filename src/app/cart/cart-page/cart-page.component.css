@@ -1,0 +1,20 @@
+.fa-xl{
+     margin-right: 8%;
+  }
+  .fa-xl:hover{
+    color: #e9242e;
+  }
+
+.center{
+    margin:auto;
+}
+.pay-button{
+    background-color: #c42a00;
+    color: white;
+    width: 90%;
+    margin: 30px auto;
+    transition: 0,4s;
+}
+.pay-button:hover{
+    background-color:  #862004;
+}

@@ -8,6 +8,8 @@ import { UseraccountComponent } from './user/useraccount/useraccount.component';
 import { MarketplaceComponent } from './marketplace/marketplace/marketplace.component';
 import { AuthGuard } from './guards/auth.guard';
 import { TrainingComponent } from './trainers/training/training.component';
+import { FactureComponent } from './cart/facture/facture.component';
+import { CartPageComponent } from './cart/cart-page/cart-page.component';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path:"register", component:RegisterComponent},
   {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]},
   {path:"trainers",component:TrainingComponent},
+  {path:"cart", component:CartPageComponent}
 ];
 
 @NgModule({

@@ -1,3 +1,5 @@
+import { Product } from "../marketplace/types/product.interface";
+
 export class GlobalApp {
     constructor() {}
     public isLoggedIn(): boolean {
@@ -7,5 +9,14 @@ export class GlobalApp {
     {
         localStorage.removeItem('token');
         
+    }
+    public getCartItems(): any{
+        return JSON.parse(localStorage.getItem('cartItems') || '[]')
+    }
+    public setCartItems(cartItems:any[])
+    {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+
     }
 }

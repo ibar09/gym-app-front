@@ -7,7 +7,7 @@
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="item-price">{{product.price}} DT</p>
-      <a href="#" class="btn btn-primary">Add to Cart</a>
+      <button  class="btn btn-primary" [disabled]="productInCart" (click)="addItemToCart()">{{ productInCart? 'Item already in the Cart': 'Add to Cart'}}</button>
     </div>
   </div>
   

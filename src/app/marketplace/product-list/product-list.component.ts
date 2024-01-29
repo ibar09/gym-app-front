@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
         
       }
     )
+  
   }
   nextPage(){
     
