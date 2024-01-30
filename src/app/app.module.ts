@@ -22,7 +22,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrainerCardComponent } from './trainers/trainer-card/trainer-card.component';
 import { TrainingComponent } from './trainers/training/training.component';
 import { TrainerListComponent } from './trainers/trainer-list/trainer-list.component';
+import { CartModule } from './cart/cart.module';
+import { CartPageComponent } from './cart/cart-page/cart-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { TrainerListComponent } from './trainers/trainer-list/trainer-list.compo
     UseraccountComponent,
     TrainerCardComponent,
     TrainingComponent,
-    TrainerListComponent
+    TrainerListComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,10 @@ import { TrainerListComponent } from './trainers/trainer-list/trainer-list.compo
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    CartModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [AuthentificationInterceptorProvider,GlobalApp],
   bootstrap: [AppComponent]

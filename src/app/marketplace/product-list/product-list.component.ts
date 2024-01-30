@@ -22,11 +22,10 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts(this.searchRequest).subscribe(
       (result)=>{
         this.products=result.items;
-        this.metaData=result.meta;
-        
-        
+        this.metaData=result.meta;     
       }
     )
+  
   }
   nextPage(){
     
@@ -49,14 +48,9 @@ export class ProductListComponent implements OnInit {
       (result)=>{
         this.products=result.items;
         this.metaData=result.meta;
-        
-        
-        
-        
+    
       }
-    )
-    
-    
+    )    
   }
   searchByPage(page:number){
     this.searchRequest.page=page;

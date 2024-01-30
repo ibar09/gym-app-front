@@ -6,6 +6,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { GlobalApp } from 'src/app/common/global';
 import { constants } from 'src/app/common/constants';
 import { userEndpoints } from '../types/user-endpoints.interface';
+import { OrderService } from 'src/app/cart/services/order.service';
+import { Order } from 'src/app/cart/types/order.interface';
 
 
 
@@ -20,9 +22,12 @@ export class UseraccountComponent implements OnInit{
   uploadedImage!: File;
   imageUrl!: string;
   user!:User;
+  orders!:Order[];
+  rechargeAmount!:number;
   constructor(private router: Router,
               private userService: UserService,
-              public app:GlobalApp) {
+              public app:GlobalApp,
+              private orderService:OrderService) {
                 this.display="none";
               }
 
@@ -55,6 +60,11 @@ export class UseraccountComponent implements OnInit{
       console.log("User not logged in");
       
     }
+    this.orderService.getOrdersByEmail().subscribe(
+      (res)=> {this.orders=res;
+      }
+    )
+    
   }
   
   navigateTo(section: 'profileSettings' | 'orders' | 'trainingProgram'): void {
@@ -87,18 +97,18 @@ export class UseraccountComponent implements OnInit{
     this.router.navigate(['']);
   }
   //order example:
-  orders = [
-    {
-      orderID: 'order45754',
-      items: [
-        { quantity: 1, name: 'Protein Power' },
-        { quantity: 2, name: 'Creatine' }
-      ],
-      amount: '756dt',
-      date: '22-2024-1'
-    },
-    // Add more orders as needed
-  ];
+  // orders = [
+  //   {
+  //     orderID: 'order45754',
+  //     items: [
+  //       { quantity: 1, name: 'Protein Power' },
+  //       { quantity: 2, name: 'Creatine' }
+  //     ],
+  //     amount: '756dt',
+  //     date: '22-2024-1'
+  //   },
+  //   // Add more orders as needed
+  // ];
   // Example data for training program
   trainingProgram = [
     { date: '1-22-2024', exercise: ['Squats','push ups'] },
@@ -132,6 +142,14 @@ this.display = "block";
 }
 onCloseHandled() {
 this.display = "none";
+}
+ChargeAccount()
+{
+  const updatedSolde = this.user.solde +this.rechargeAmount;
+
+  this.user.solde = updatedSolde;
+  this.userService.updateUser((this.user as any).id,this.user).subscribe();
+  this.onCloseHandled();
 }
 
 }
