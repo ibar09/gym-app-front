@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     FormsModule,
     FontAwesomeModule
-  ]
+  ],
+  providers:[FactureComponent]
 })
 export class CartModule { }

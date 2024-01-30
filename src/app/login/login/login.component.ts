@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { LoginData } from 'src/app/auth/types/login.data.interface';
 import { Router } from '@angular/router';
+import { GlobalApp } from 'src/app/common/global';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   display: string;
   loginMessage:string;
   loginButtonText:string;
-  constructor (private authService:AuthService,private Router:Router){
+  constructor (private authService:AuthService,private Router:Router,private app:GlobalApp){
     this.user={email:'',
       password:''
     }

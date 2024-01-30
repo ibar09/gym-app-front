@@ -30,7 +30,8 @@ export class RegisterComponent {
     address:"",   
     password:"",
     solde:0,
-    image:""
+    image:"",
+    orders:[]
     }
     this.successful=false;
   }

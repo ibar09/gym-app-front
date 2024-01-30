@@ -1,3 +1,5 @@
+import { Order } from "src/app/cart/types/order.interface";
+
 export interface User {
     name:string;
     lastName:string;
@@ -8,4 +10,5 @@ export interface User {
     password:string;
     solde:number;
     image: string;
+    orders: Order[];
 }

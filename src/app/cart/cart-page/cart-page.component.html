@@ -32,10 +32,10 @@
     </div>
         <div class="col">
           <div class="row">
-            <facture [items]="cartItems"></facture>
+            <facture [items]="cartItems"  (totalAmountChange)="handleTotalAmountChange($event)"></facture>
           </div>
           <div class="row">
-            <button class="btn pay-button">Pay</button>
+            <button class="btn pay-button" (click)="pay()">Pay</button>
           </div>
       </div>
     

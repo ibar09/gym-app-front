@@ -24,7 +24,9 @@ import { TrainingComponent } from './trainers/training/training.component';
 import { TrainerListComponent } from './trainers/trainer-list/trainer-list.component';
 import { CartModule } from './cart/cart.module';
 import { CartPageComponent } from './cart/cart-page/cart-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CartPageComponent } from './cart/cart-page/cart-page.component';
     FormsModule,
     FontAwesomeModule,
     NgbModule,
-    CartModule
+    CartModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [AuthentificationInterceptorProvider,GlobalApp],
   bootstrap: [AppComponent]

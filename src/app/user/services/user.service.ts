@@ -31,7 +31,7 @@ export class UserService {
   }
 
   updateUser(userId: number, updatedUser: User): Observable<User> {
-    return this.http.put<User>(userEndpoints.update+userId.toString(), updatedUser);
+    return this.http.patch<User>(userEndpoints.update+userId.toString(), updatedUser);
   }
 
   deleteUser(userId: number): Observable<void> {
