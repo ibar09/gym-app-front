@@ -1,0 +1,109 @@
+
+<form>
+  <div class="row">
+    <div class="col">
+      <input   [(ngModel)]="IdValue"  name="imgUrlInput" #url type="text" class="form-control" placeholder="ID">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="OrderedBy" name="imgUrlInput" type="text" class="form-control" placeholder="OrderedBy">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="PriceValue"  name="imgUrlInput"type="text" class="form-control" placeholder="Price">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="CreationDate" name="imgUrlInput" type="text" class="form-control" placeholder="Date de Création">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="StateValue" name="imgUrlInput" type="text" class="form-control" placeholder="State">
+    </div>
+
+    <div class="col">
+      <button type="button" class="btn btn-warning me-1" (click)="editOrder()">Edit</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success me-1" (click)="addOrder()">Add</button>
+    </div>
+
+  </div>
+</form>
+
+<div style="margin-top: 20px;margin-bottom: 20px" class="row" >
+  <div class="form-check col " >
+    <input class="form-check-input" type="checkbox" id="filterByName" (change)="updateFilters('OrderedBy')">
+    <label class="form-check-label" for="filterByName">
+      Filter by OrderedBy
+    </label>
+  </div>
+
+  <div class="form-check col" >
+    <input class="form-check-input" type="checkbox" id="filterById" (change)="updateFilters('id')">
+    <label class="form-check-label" for="filterById">
+      Filter by ID
+    </label>
+  </div>
+
+  <div class="form-check col">
+    <input class="form-check-input" type="checkbox" id="filterByASCPrice" (change)="updateFilters('PriceAsc')">
+    <label class="form-check-label" >
+      Filter by Price (ASC)
+    </label>
+  </div>
+  <div class="form-check col">
+    <input class="form-check-input" type="checkbox" id="filterDescPrice" (change)="updateFilters('PriceDesc')">
+    <label class="form-check-label" >
+      Filter by Price (DES)
+    </label>
+  </div>
+
+
+  <div class="form-check col" >
+    <input class="form-check-input" type="checkbox" id="filterbyCreationDate" (change)="updateFilters('creationDate')">
+    <label class="form-check-label" for="filterByCreationDate">
+      Filter by CreationDate
+    </label>
+  </div>
+
+
+</div>
+
+
+
+
+<table class="table table-sm">
+
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">OrderedBy</th>
+    <th scope="col"></th>
+    <th scope="col">Price</th>
+    <th scope="col"></th>
+    <th scope="col">CreationDate</th>
+    <th scope="col"></th>
+
+    <th scope="col">State</th>
+    <th scope="col"></th>
+    <th scope="col">Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+
+
+  <tr *ngFor="let th of filterRows(); let i = index">
+    <th scope="row"  [innerText]="row[i]['id']"></th>
+    <td colspan="2"  [innerText]="row[i]['OrderedBy']"></td>
+    <td colspan="2" [innerText]="row[i]['Price']" ></td>
+    <td colspan="2" [innerText]="row[i]['CreationDate']"></td>
+    <td colspan="2" [innerText]="row[i]['StateValue']"></td>
+    <td colspan="2">
+      <button type="button" class="btn btn-danger me-1" (click)="deleteRow(i)">Delete</button>
+    </td>
+  </tr>
+
+  </tbody>
+
+</table>

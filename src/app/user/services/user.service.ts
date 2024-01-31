@@ -5,6 +5,8 @@ import { SerachResult } from 'src/app/common/types/searchResult';
 import { Observable } from 'rxjs';
 import { SerachRequest } from 'src/app/common/types/searchRequest';
 import { userEndpoints } from '../types/user-endpoints.interface';
+import {Product} from "../../marketplace/types/product.interface";
+import {productEndpoints} from "../../marketplace/types/product-endpoints.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,14 @@ export class UserService {
   getUsers(searchRequest:SerachRequest): Observable<SerachResult<User>> {
     return this.http.get<SerachResult<User>>(userEndpoints.findAll,{params: {page : searchRequest.page,limit:searchRequest.limit}});
   }
+
+
   getUserByEmail(email:string)
   {
     return this.http.get<User>(userEndpoints.findByEmail+email);
   }
 
- 
+
   getUserById(userId: number): Observable<User> {
     return this.http.get<User>(userEndpoints.findById+userId.toString());
   }
@@ -35,7 +39,7 @@ export class UserService {
   }
 
   deleteUser(userId: number): Observable<void> {
- 
+
     return this.http.delete<void>(userEndpoints.delete+userId.toString());
   }
 

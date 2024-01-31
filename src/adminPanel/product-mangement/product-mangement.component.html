@@ -1,0 +1,88 @@
+
+<form>
+  <div class="row">
+    <div class="col">
+      <input   [(ngModel)]="UrlValue"  name="imgUrlInput" #url type="text" class="form-control" placeholder="imageUrl">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="IdValue" name="imgUrlInput" type="text" class="form-control" placeholder="Id">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="ProductNameValue"  name="imgUrlInput"type="text" class="form-control" placeholder="ProductName">
+    </div>
+    <div class="col">
+      <input [(ngModel)]="PriceValue" name="imgUrlInput" type="text" class="form-control" placeholder="Price">
+    </div>
+
+    <div class="col">
+      <button type="button" class="btn btn-warning me-1" (click)="editProduct()">Edit</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success me-1" (click)="addProduct()">Add</button>
+    </div>
+
+  </div>
+</form>
+
+
+<div style="margin-top: 20px;margin-bottom: 20px" class="row" >
+  <div class="form-check col " >
+    <input class="form-check-input" type="checkbox" id="filterByName" (change)="updateFilters('ProductName')">
+    <label class="form-check-label" for="filterByName">
+      Filter by Name
+    </label>
+  </div>
+
+  <div class="form-check col" >
+    <input class="form-check-input" type="checkbox" id="filterById" (change)="updateFilters('id')">
+    <label class="form-check-label" for="filterById">
+      Filter by ID
+    </label>
+  </div>
+
+  <div class="form-check col">
+    <input class="form-check-input" type="checkbox" id="filterByBalance" (change)="updateFilters('Price')">
+    <label class="form-check-label" for="filterByBalance">
+      Filter by Balance
+    </label>
+  </div>
+
+
+</div>
+
+
+<table class="table table-sm">
+
+  <thead>
+  <tr>
+    <th scope="col">image</th>
+    <th scope="col">Id</th>
+    <th scope="col"></th>
+    <th scope="col">Productname</th>
+    <th scope="col"></th>
+    <th scope="col">Price</th>
+    <th scope="col"></th>
+    <th scope="col">Actions</th>
+
+  </tr>
+
+  </thead>
+
+  <tbody>
+
+
+
+  <tr *ngFor="let th of row; let i = index">
+    <th scope="row" ><img [src]="row[i]['img_url']" class="rounded-circle" alt="" style="width: 45px; height: 45px" /></th>
+    <td colspan="2"  [innerText]="row[i]['id']"></td>
+    <td colspan="2" [innerText]="row[i]['ProductName']" ></td>
+    <td colspan="2" [innerText]="row[i]['Price']"></td>
+    <td colspan="2">
+      <button type="button" class="btn btn-danger me-1" (click)="deleteRow(i)">Delete</button>
+    </td>
+  </tr>
+
+  </tbody>
+
+</table>
+
