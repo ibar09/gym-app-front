@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {OrderService} from "../../app/cart/services/order.service";
 
 @Component({
   selector: 'app-orders-mangement',
@@ -12,56 +13,60 @@ export class OrdersMangementComponent {
   CreationDate:string='';
   StateValue:string="";
   selectedFilters: string[] = [];
+  row :any[]=[];
 
 
-  // updaterow()
-  // {
-  //   this.userService.getUsers({page: 1, limit: 10}).subscribe(
-  //       (result) => {
-  //         console.log(result)
-  //         this.row = result.items;
-  //
-  //       }
-  //   )
-  // }
+  updaterow()
+  {
+    this.orderService.getOrders().subscribe(
+        (result) => {
+          console.log(result)
+          this.row = result;
+
+        }
+    )
+  }
+  constructor(private orderService:OrderService) {
+    this.updaterow();
+  }
 
 
-  row = [
-    { id : 1,
-      OrderedBy: 'Elking',
-      Price:69,
-      CreationDate:'02-17-2023',
-      StateValue:"Not Delivered Yet"
-    },
-    {
-      id : 2,
-      OrderedBy: 'gadour',
-      Price:645,
-      CreationDate:'09-01-2023',
-      StateValue:"Delivered"
-    },
-    {
-      id : 3,
-      OrderedBy: 'merhben',
-      Price:486,
-      CreationDate:'05-10-2023',
-      StateValue:"Delivered"
-    },
-    {
-      id : 4,
-      OrderedBy: 'Matyem Afif',
-      Price:869,
-      CreationDate:'02-02-2022',
-      StateValue:"Not Delivered Yet"
-    },
-    {
-      id : 5,
-      OrderedBy: 'kamel Karoui',
-      Price:69,
-      CreationDate:'02-01-2014',
-      StateValue:"Delivred"
-    },
-  ];
+  // row = [
+  //   { id : 1,
+  //     OrderedBy: 'Elking',
+  //     Price:69,
+  //     CreationDate:'02-17-2023',
+  //     StateValue:"Not Delivered Yet"
+  //   },
+  //   {
+  //     id : 2,
+  //     OrderedBy: 'gadour',
+  //     Price:645,
+  //     CreationDate:'09-01-2023',
+  //     StateValue:"Delivered"
+  //   },
+  //   {
+  //     id : 3,
+  //     OrderedBy: 'merhben',
+  //     Price:486,
+  //     CreationDate:'05-10-2023',
+  //     StateValue:"Delivered"
+  //   },
+  //   {
+  //     id : 4,
+  //     OrderedBy: 'Matyem Afif',
+  //     Price:869,
+  //     CreationDate:'02-02-2022',
+  //     StateValue:"Not Delivered Yet"
+  //   },
+  //   {
+  //     id : 5,
+  //     OrderedBy: 'kamel Karoui',
+  //     Price:69,
+  //     CreationDate:'02-01-2014',
+  //     StateValue:"Delivred"
+  //   },
+  // ];
 
   filterRows(): any[] {
     if (this.selectedFilters.length === 0) {

@@ -25,9 +25,9 @@ export class RegisterComponent {
       name:"",
     lastName:"",
     age:0,
-    phoneNumber:0, 
+    phoneNumber:0,
     email:"",
-    address:"",   
+    address:"",
     password:"",
     solde:0,
     image:"",
@@ -36,8 +36,8 @@ export class RegisterComponent {
     this.successful=false;
   }
   register(){
-    
-    
+
+
     this.authService.register(this.newUser).subscribe(
       (res)=> {this.message="Registration was successful!"
       this.registerButtonText="Continue";
@@ -45,7 +45,7 @@ export class RegisterComponent {
       {
         this.userService.uploadUserPhoto(this.uploadedImage).subscribe()
       }
-    
+
       this.successful=true;
       this.openModal();
     },
@@ -55,7 +55,7 @@ export class RegisterComponent {
       console.log(this.message);
       this.openModal();
       }
-      
+
     )
   }
   openModal() {
@@ -71,9 +71,9 @@ export class RegisterComponent {
   onFileSelected(event: any): void {
     this.uploadedImage=event.target.files[0];
     console.log(this.uploadedImage);
-    
+
   }
-  
+
 
 
 }
