@@ -52,7 +52,7 @@ onCloseHandled() {
 }
 
 navigateToMyAccount() {
-  this.Router.navigate(['my-account']);
+  this.Router.navigate(['my-account2']);
 }
 
 }

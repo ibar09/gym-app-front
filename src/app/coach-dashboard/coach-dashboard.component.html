@@ -1,0 +1,241 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+
+<div class="dashboard-container" [ngStyle]="{ 'background-image': 'url(assets/hero.jpg)' }">
+    <div class="dashboard-box">
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="photo-panel">
+          <div class="image-container">
+        <img [src]="imageUrl" alt="Profile Image" class="profile-image">
+      </div>
+      <input type="file"  (change)="onFileSelected($event)" class="upload-input" title="Upload Photo" />
+      
+      </div>
+        <h5>{{user ? user.name : ''}}</h5>
+        <ul class="sidebar-links text-white fw-bolder">
+          <li><a class="cursor-pointer red-text fw-bold" (click)="navigateTo('profileSettings')">Profile Settings</a></li>
+          <li><a  class="cursor-pointer red-text fw-bold" (click)="navigateTo('orders')">My Orders</a></li>
+          <li><a  class="cursor-pointer red-text fw-bold" (click)="navigateTo('Clients')">Clients</a></li>
+        </ul>
+
+        <div class="money-bag-box">
+          <i class="fas fa-money-bill"></i> <!-- Assuming you're using FontAwesome for the money bag icon -->
+          <span class="sales-amount">{{user.solde}}</span>
+        </div>
+        <a  class="recharge-link red-text" (click)="onSubmit()">Recharge Your Account</a>
+      </div>
+      
+      <!-- Modaal-->
+      <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                    <div class="modal-header">
+                          <h4 class="modal-title">Amount to Recharge : </h4>
+                          <input type="number" id="amount">
+                          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                        </div>
+               
+                    <div class="modal-footer">
+                          <button type="button " class="btn btn-danger" (click)="onCloseHandled()">Charge My Account</button>
+                        </div>
+           </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+      <!-- Profile Settings Section -->
+<div class="section profile-container" *ngIf="selectedSection === 'profileSettings'">
+    <div class="profile-box">
+    <h3 class="red-text  fw-bolder">Profile Settings</h3>
+  
+    <!-- User Info Form -->
+    
+      <form>
+        <div class="form-group">
+        <img src="assets/avatar.png" alt="Profile Image" class="profile-image2">
+        <label for="profilePhoto" class="text-white text-center fw-bold">Change your profile picture:</label>
+        <input type="file" id="profilePhoto" class="form-control-file">
+      </div>
+        <div class="form-group">
+          <label for="firstName" class="text-white text-center fw-bold">First Name:</label>
+          <div class="input-group">
+            <input type="text" id="firstName" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['name']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('name')">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </div>
+        </div>
+  
+        
+        <div class="form-group">
+          <label for="lastName" class="text-white text-center fw-bold">Last Name:</label>
+          <div class="input-group">
+            <input type="text" id="lastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['lastName']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('lastName')">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="age" class="text-white text-center fw-bold">Age:</label>
+          <div class="input-group">
+            <input type="number" id="age" [(ngModel)]="user.age" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['age']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('age')">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email" class="text-white text-center fw-bold">Email:</label>
+          <div class="input-group">
+            <input type="email" id="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['email']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('email')">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber" class="text-white text-center fw-bold">PhoneNumber:</label>
+            <div class="input-group">
+              <input type="phoneNumber" id="phoneNumber" [(ngModel)]="user.phoneNumber" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['phoneNumber']">
+              <span class="input-group-text cursor-pointer" (click)="toggleEditable('phoneNumber')">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address" class="text-white text-center fw-bold">address:</label>
+            <div class="input-group">
+              <input type="address" id="address" [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['address']">
+              <span class="input-group-text cursor-pointer" (click)="toggleEditable('address')">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+            </div>
+          </div>
+  
+        <div class="form-group">
+          <label for="password" class="text-white text-center fw-bold">Password:</label>
+          <div class="input-group">
+            <input type="password" id="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" [readonly]="!isEditable['password']">
+            <span class="input-group-text cursor-pointer" (click)="toggleEditable('password')">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </div>
+        </div>
+  
+        <!-- Save Button -->
+        <button class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+
+
+
+      <!-- Main Content -->
+      <div class="main-content">
+  
+       <!-- dashboard.component.html -->
+
+       <button class="btn btn-primary button" (click)="logoutandnavigateToHome()" routerLink="my-account">Logout</button>
+<div class="section" *ngIf="selectedSection === 'orders'">
+    <h3 class="text-white text-center">Your Orders</h3>
+    <table class="orders-table text-white text-center">
+      <tr>
+        <th>Order ID</th>
+        <th>Items</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+      <!-- Replace with actual order data -->
+      <tr *ngFor="let order of orders" class="text-white">
+        <td>{{ order.orderID }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let item of order.items">{{ item.quantity }} * {{ item.name }}</li>
+          </ul>
+        </td>
+        <td>{{ order.amount }}</td>
+        <td>{{ order.date }}</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+  
+  
+ <!-- Training Program Section -->
+      <!-- dashboard.component.html -->
+
+<div class="section" *ngIf="selectedSection === 'Clients'">
+    <h3 class="text-white text-center bold">Your Clients</h3>
+    <table class="training-program-table text-white">
+    
+        <th>User</th>
+        
+    
+      <!-- Replace with actual training program data -->
+      <tr *ngFor="let client of clients">
+        <td class="fw-bold">{{ client.name }} {{ client.lastName }}
+        
+            <button class="btn btn-primary2" (click)="viewDetails(client)">View Details</button>
+            <button class="btn btn-primary2" >View Training Program</button>
+        </td>
+          
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+
+
+
+  <!-- Client Details Section -->
+  <div class="section profile-container" *ngIf="selectedSection === 'clientDetails'">
+    <div class="profile-box">
+    <h3 class="red-text  fw-bolder">User Details</h3>
+  
+
+    <!-- User Info Form -->
+    
+      <form>
+        <div class="form-group">
+        <img src={{selectedClientDetails.photoUrl}} alt="Profile Image" class="profile-image2">
+      </div>
+
+        <div class="form-group">
+          <label for="firstName" class="red-text text-center fw-bold">First Name:</label>
+          <p class="fw-bold text-white">{{ selectedClientDetails.name }}</p>
+        </div>
+  
+        
+        <div class="form-group">
+          <label for="lastName" class="red-text text-center fw-bold">Last Name:</label>
+          <p class="fw-bold text-white">{{ selectedClientDetails.lastName }}</p>
+        </div>
+  
+        <div class="form-group">
+          <label for="weight" class="red-text text-center fw-bold">Weight:</label>
+          <p class="fw-bold text-white">Weight: {{ selectedClientDetails.weight }} Kg</p>
+          </div>
+        
+  
+        <div class="form-group">
+          <label for="height" class="red-text text-center fw-bold">Height</label>
+          
+            <p class="fw-bold text-white">Height: {{ selectedClientDetails.height }} M</p>
+           
+        </div>
+  
+
+
+  
+  

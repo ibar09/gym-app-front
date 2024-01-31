@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { TrainingComponent } from './trainers/training/training.component';
 import { FactureComponent } from './cart/facture/facture.component';
 import { CartPageComponent } from './cart/cart-page/cart-page.component';
+import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path:"register", component:RegisterComponent},
   {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]},
   {path:"trainers",component:TrainingComponent},
-  {path:"cart", component:CartPageComponent}
+  {path:"cart", component:CartPageComponent},
+  {path:"my-account2", component:CoachDashboardComponent}
 ];
 
 @NgModule({
