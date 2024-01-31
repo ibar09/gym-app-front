@@ -1,0 +1,25 @@
+<div class="container-fluid nav-header">
+  <div class="row justify-content-between align-items-center py-4">
+
+    <!-- Logo -->
+    <div class="col-md-6 text-center text-md-start">
+      <img class="cursor-pointer"  src="../../assets/logo.png" alt="logo" style="width: 150px;">
+    </div>
+
+    <!-- Navigation Items (Centered) -->
+    <ul class="col-md-4  d-md-flex justify-content-around list-unstyled mx-auto">
+      <li class="mx-4 cursor-pointer link fw-bold" routerLink=""><a>Home</a></li>
+      <li class="mx-4 cursor-pointer link fw-bold" routerLink="trainers">Trainers</li>
+      <li class="mx-4 cursor-pointer link fw-bold"routerLink="marketplace">Market</li>
+      <li class="mx-4 cursor-pointer link fw-bold">Contact Us</li>
+    </ul>
+
+    <!-- Register Now Button (Right Corner) -->
+    <div class="col-md-2 text-center text-md-end">
+      <button class="btn btn-primary button" *ngIf="!app.isLoggedIn()" routerLink="register">Login</button>
+      <a class="icon" *ngIf="app.isLoggedIn()" routerLink="my-account"><fa-icon class="fa-2xl " [icon]="icon" ></fa-icon></a>
+      
+    </div>
+
+  </div>
+</div>

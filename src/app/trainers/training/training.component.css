@@ -1,0 +1,31 @@
+/* Add this to your global styles or include it in your component's styles */
+
+.card {
+    margin-top: 8%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+  
+  .form-check {
+    margin-bottom: 10px;
+  }
+  
+  .form-check-label {
+    font-weight: 400;
+  }
+  
+  .form-check-input:hover {
+    cursor: pointer;
+  }
+  

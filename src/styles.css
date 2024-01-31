@@ -2,3 +2,49 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.red-text {
+    color: #ff0000;
+  }
+
+body {
+    margin: 0;
+    font-family: 'bebas-neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+.pagination > li > a
+{
+    background-color: white;
+    color: #c42a00;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #c42a00 !Important;
+    border: solid 1px #c42a00 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #c42a00 !Important;
+    border: solid 1px #c42a00;
+}
+  .cursor-pointer {
+    cursor: pointer;
+  }
+

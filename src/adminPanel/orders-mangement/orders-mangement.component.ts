@@ -14,6 +14,16 @@ export class OrdersMangementComponent {
   selectedFilters: string[] = [];
 
 
+  // updaterow()
+  // {
+  //   this.userService.getUsers({page: 1, limit: 10}).subscribe(
+  //       (result) => {
+  //         console.log(result)
+  //         this.row = result.items;
+  //
+  //       }
+  //   )
+  // }
 
 
   row = [

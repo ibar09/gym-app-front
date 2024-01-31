@@ -1,0 +1,187 @@
+/* dashboard.component.css */
+
+.dashboard-box {
+  display: flex;
+}
+.dashboard-container {
+    height: 150vh; /* Set the height as needed */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  height:150vh;
+  background: transparent;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(244, 2, 2, 0.522);
+backdrop-filter: blur(12.9px);
+-webkit-backdrop-filter: blur(12.9px);
+border: 1px solid rgba(51, 51, 51, 0.3);
+  text-align: center;
+}
+
+
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.sidebar-links li {
+  margin-bottom: 10px;
+  line-height: 7;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.orders-table,
+.training-program-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.orders-table th,
+.orders-table td,
+.training-program-table th,
+.training-program-table td {
+  border: 1px solid #c90000;
+  padding: 8px;
+  text-align: center;
+}
+
+.orders-table th,
+.training-program-table th {
+  background-color: #a80707;
+}
+
+/* Optional: Adjustments for responsiveness */
+@media (max-width: 768px) {
+  .dashboard-box {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.photo-panel {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+
+.image-container {
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.photo-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #a80707;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1; /* Ensure the button is on top of the input */
+}
+
+.upload-label:hover {
+  background-color: #7e0c0c;
+}
+
+.profile-box {
+    background: rgba(255, 255, 255, 0.7);
+    background: rgba(51, 51, 51, 0.79);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.9px);
+    -webkit-backdrop-filter: blur(12.9px);
+    border: 1px solid rgba(51, 51, 51, 0.3);
+    padding: 100px;
+    width: 450px;
+    margin-left: 375px;
+    margin-bottom: 15px;
+    margin-top: 40px;
+  }
+  .profile-container {
+    height: 90vh;    
+  }
+
+  .btn-primary {
+    background-color: #940000; 
+    color: #ffffff;
+    padding: 1px 40px;
+    font-size: 20px;
+    position:center;
+    
+  }
+  .profile-image2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    position: center;
+  }
+  .money-bag-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust as needed for spacing */
+    background-color: #ffffff; /* Background color for the box */
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .money-bag-box i {
+    font-size: 24px; /* Adjust as needed for icon size */
+    margin-right: 5px; /* Adjust as needed for spacing between icon and sales amount */
+  }
+  
+  .sales-amount {
+    font-size: 18px; /* Adjust as needed for sales amount font size */
+  }
+  .recharge-link {
+    display: block;
+    margin-top: 10px; /* Adjust as needed for spacing */
+    text-align: center;
+
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .recharge-link:hover {
+    text-decoration: underline;
+  }
+
+
