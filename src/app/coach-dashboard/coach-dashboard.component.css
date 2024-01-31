@@ -41,7 +41,8 @@
   }
   
   .orders-table,
-  .training-program-table {
+  .training-program-table,
+  .client-details-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -50,24 +51,21 @@
   .orders-table th,
   .orders-table td,
   .training-program-table th,
-  .training-program-table td {
+  .training-program-table td,
+  .client-details-table th,
+  .client-details-table td {
     border: 1px solid #c90000;
     padding: 8px;
     text-align: center;
   }
   
   .orders-table th,
-  .training-program-table th {
+  .training-program-table th,
+  .client-details-table th {
     background-color: #a80707;
   }
-  .training-program-table td{
+  .client-details-table td {
     display:flex;
-   
-    align-items: center;
-  }
-  .training-program-table button {
-    margin-left: auto;
-    margin-right: 0; /* Push the buttons to the right edge */
   }
   /* Optional: Adjustments for responsiveness */
   @media (max-width: 768px) {
