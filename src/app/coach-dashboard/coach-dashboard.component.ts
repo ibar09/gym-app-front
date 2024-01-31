@@ -14,7 +14,7 @@ import { userEndpoints } from '../user/types/user-endpoints.interface';
 })
 export class CoachDashboardComponent implements OnInit{
     display: string;
-    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'trainingProgram' | 'profileSettings' = "orders";
+    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'trainingProgram' | 'addexercice' | 'profileSettings' = "orders";
     uploadedImage!: File;
     imageUrl!: string;
     user!: User;
@@ -55,7 +55,7 @@ export class CoachDashboardComponent implements OnInit{
       }
     }
     
-    navigateTo(section: 'profileSettings' | 'orders' | 'Clients'): void {
+    navigateTo(section: 'profileSettings' | 'orders' | 'Clients' | 'addexercice' ): void {
       this.selectedSection = section;
     }
     onFileSelected(event: any): void {
