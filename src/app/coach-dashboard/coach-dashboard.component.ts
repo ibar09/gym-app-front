@@ -14,7 +14,7 @@ import { userEndpoints } from '../user/types/user-endpoints.interface';
 })
 export class CoachDashboardComponent implements OnInit{
     display: string;
-    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'profileSettings' = "orders";
+    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'trainingProgram' | 'profileSettings' = "orders";
     uploadedImage!: File;
     imageUrl!: string;
     user!: User;
@@ -78,7 +78,7 @@ export class CoachDashboardComponent implements OnInit{
         }
       
     }
-    
+   
   
     logoutandnavigateToHome() {
       this.app.logOut();
@@ -99,8 +99,10 @@ export class CoachDashboardComponent implements OnInit{
     ];
     // Example data for training program
     clients = [
-      { id:'1',name: 'Client1', lastName: 'Last1', photoUrl: 'assets/avatar.png', weight: 70, height: 175 },
-      { id:'2',name: 'Client2', lastName: 'Last2', photoUrl: 'assets/avatar.png', weight: 65, height: 180 },
+      { id:'1',name: 'Client1', lastName: 'Last1', photoUrl: 'assets/avatar.png', weight: 70, height: 175,trainingProgram :[
+        { date: '1-22-2024', exercise: ['Squats','push ups'] },{ date: '1-23-2024', exercise: 'Push-ups' },] },
+      { id:'2',name: 'Client2', lastName: 'Last2', photoUrl: 'assets/avatar.png', weight: 65, height: 180,trainingProgram :[
+        { date: '1-22-2024', exercise: ['Squats','push ups'] }] },
       // Add more clients as needed
     ];
   
@@ -141,7 +143,16 @@ export class CoachDashboardComponent implements OnInit{
     this.selectedSection = 'clientDetails';
     console.log(client);
   }
+  trainingProgram = [
+    { date: '1-22-2024', exercise: ['Squats','push ups'] },
+    { date: '1-23-2024', exercise: 'Push-ups' },
+];
 
 
+viewTrainingProgram(client: any): void {
+  this.selectedClientDetails = client;
+  this.selectedSection = 'trainingProgram';
+  console.log(client);
+}
 
 }

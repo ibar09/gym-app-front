@@ -28,21 +28,21 @@
       </div>
       
       <!-- Modaal-->
-      <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
         <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                     <div class="modal-header">
                           <h4 class="modal-title">Amount to Recharge : </h4>
                           <input type="number" id="amount">
                           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-                        </div>
+                    </div>
                
                     <div class="modal-footer">
                           <button type="button " class="btn btn-danger" (click)="onCloseHandled()">Charge My Account</button>
-                        </div>
-           </div>
-            </div>
-            </div>
+                    </div>
+              </div>
+        </div>
+</div>
 
 
 
@@ -178,7 +178,7 @@
 
 <div class="section" *ngIf="selectedSection === 'Clients'">
     <h3 class="text-white text-center bold">Your Clients</h3>
-    <table class="training-program-table text-white">
+    <table class="client-details-table text-white">
     
         <th>User</th>
         
@@ -188,33 +188,29 @@
         <td class="fw-bold">{{ client.name }} {{ client.lastName }}
         
             <button class="btn btn-primary2" (click)="viewDetails(client)">View Details</button>
-            <button class="btn btn-primary2" >View Training Program</button>
+            <button class="btn btn-primary2" (click)="viewTrainingProgram(client)">View Training Program</button>
         </td>
           
       </tr>
-      <!-- Add more rows as needed -->
     </table>
-  </div>
+</div>
 
 
 
-  <!-- Client Details Section -->
-  <div class="section profile-container" *ngIf="selectedSection === 'clientDetails'">
+<!-- Client Details Section -->
+<div class="section profile-container" *ngIf="selectedSection === 'clientDetails'">
     <div class="profile-box">
-    <h3 class="red-text  fw-bolder">User Details</h3>
-  
-
+        <h3 class="red-text  fw-bolder">User Details</h3>
     <!-- User Info Form -->
-    
-      <form>
-        <div class="form-group">
-        <img src={{selectedClientDetails.photoUrl}} alt="Profile Image" class="profile-image2">
-      </div>
+        <form>
+            <div class="form-group">
+            <img src={{selectedClientDetails.photoUrl}} alt="Profile Image" class="profile-image2">
+    </div>
 
-        <div class="form-group">
+    <div class="form-group">
           <label for="firstName" class="red-text text-center fw-bold">First Name:</label>
           <p class="fw-bold text-white">{{ selectedClientDetails.name }}</p>
-        </div>
+    </div>
   
         
         <div class="form-group">
@@ -234,8 +230,35 @@
             <p class="fw-bold text-white">Height: {{ selectedClientDetails.height }} M</p>
            
         </div>
-  
+    </form>
+    </div>
+</div>
+
+<!-- Training Program Section -->
+<div class="section" *ngIf="selectedSection === 'trainingProgram'">
+    <h3 class="text-white text-center bold">{{selectedClientDetails.name }} {{selectedClientDetails.lastName }}  Training Program</h3>
+    <table class="training-program-table text-white">
+      <tr>
+        <th>Date</th>
+        <th>Exercise</th>
+        <th>Actions</th>
+      </tr>
+      <!-- Replace with actual training program data -->
+      <tr *ngFor="let program of selectedClientDetails.trainingProgram">
+        <td>{{ program.date }}</td>
+        <td>{{ program.exercise }}</td>
+        <td>
+            <button class="btn btn-danger" >Remove</button>
+            <button class="btn btn-success" >Add</button>
+        </td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
 
 
-  
+
+</div>
+</div>
+</div>
   
