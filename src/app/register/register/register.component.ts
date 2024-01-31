@@ -18,6 +18,7 @@ export class RegisterComponent {
   bodyMessage!: string;
   registerButtonText!: string;
   uploadedImage!: File;
+  coachCheck!:boolean;
   constructor(private userService:UserService,
     private authService:AuthService,
     private router: Router,){
