@@ -25,6 +25,7 @@ import { TrainerListComponent } from './trainers/trainer-list/trainer-list.compo
 import { CartModule } from './cart/cart.module';
 import { CartPageComponent } from './cart/cart-page/cart-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -42,6 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
     TrainerCardComponent,
     TrainingComponent,
     TrainerListComponent,
+    CoachDashboardComponent,
     
   ],
   imports: [
