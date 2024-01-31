@@ -1,4 +1,6 @@
-
-<app-header></app-header>
+<app-header *ngIf="shouldDisplayHeader"></app-header>
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+<app-footer *ngIf="shouldDisplayFooter"></app-footer>
+<app-admin-panel *ngIf="shouldDisplayAdminPanel"></app-admin-panel>
+
+<!--<app-customers></app-customers>-->
