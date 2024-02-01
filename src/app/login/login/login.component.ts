@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { LoginData } from 'src/app/auth/types/login.data.interface';
 import { Router } from '@angular/router';
 import { GlobalApp } from 'src/app/common/global';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -36,6 +37,8 @@ onSubmit() {
       },
       (err)=>
       {
+        console.log(err);
+        
         this.loginMessage="Email or Password are Wrong";
         this.loginButtonText="Try Again";
 
@@ -52,7 +55,12 @@ onCloseHandled() {
 }
 
 navigateToMyAccount() {
-  this.Router.navigate(['my-account2']);
+    const helper = new JwtHelperService();
+    const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
+    if(decodedToken['role']=='coach')
+    this.Router.navigate(['coach-dashbord']);
+    else
+    this.Router.navigate(['my-account']);
 }
 
 }

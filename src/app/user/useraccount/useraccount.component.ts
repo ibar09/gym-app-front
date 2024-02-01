@@ -21,7 +21,7 @@ export class UseraccountComponent implements OnInit{
   selectedSection: 'orders' | 'trainingProgram' | 'profileSettings' = "orders";
   uploadedImage!: File;
   imageUrl!: string;
-  user!:User;
+  user!:any;
   orders!:Order[];
   rechargeAmount!:number;
   constructor(private router: Router,
@@ -37,7 +37,9 @@ export class UseraccountComponent implements OnInit{
     {
       const helper = new JwtHelperService();
       const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
-      this.userService.getUserByEmail(decodedToken['email']).subscribe(
+      if(decodedToken['role']=="coach")
+      {
+          this.userService.getUserByEmail(decodedToken['email']).subscribe(
         (res)=>{
           this.user=res; 
           if(this.user.image)
@@ -54,6 +56,27 @@ export class UseraccountComponent implements OnInit{
           
         }
       )
+      }
+      else
+      {
+        this.userService.getUserByEmail(decodedToken['email']).subscribe(
+          (res)=>{
+            this.user=res; 
+            if(this.user.image)
+            {
+              this.imageUrl=userEndpoints.getImage+this.user.image
+            }
+            else
+            {
+              this.imageUrl="assets/default_pic.jpg";
+            }
+          },
+          (err)=> {
+            console.log(err);
+            
+          }
+        )
+      }
     }
     else
     {

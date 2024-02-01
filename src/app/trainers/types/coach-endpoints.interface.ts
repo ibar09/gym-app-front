@@ -6,4 +6,7 @@ export const coachEndpoints ={
     update:constants.url+'coach/',
     delete:constants.url+'coach/',
     findById:constants.url+'coach/',
+    findByEmail:constants.url+'coach/email/',
+    upload:constants.url+'coach/upload',
+    getImage:constants.url+'coach/profile-image/'
 }

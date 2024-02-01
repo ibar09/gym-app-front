@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]},
   {path:"trainers",component:TrainingComponent},
   {path:"cart", component:CartPageComponent},
-  {path:"my-account2", component:CoachDashboardComponent},
+  {path:"coach-dashbord", component:CoachDashboardComponent},
   {path:"productdetails/:id", component:ProductDetailsComponent},
   {path:"coachdetails/:id", component:CoachDetailsComponent},
 ];
