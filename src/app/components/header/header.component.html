@@ -17,7 +17,7 @@
     <!-- Register Now Button (Right Corner) -->
     <div class="col-md-2 text-center text-md-end">
       <button class="btn btn-primary button" *ngIf="!app.isLoggedIn()" routerLink="register">Register</button>
-      <a class="icon" *ngIf="app.isLoggedIn()" routerLink="my-account"><fa-icon class="fa-2xl " [icon]="icon" ></fa-icon></a>
+      <a class="icon" *ngIf="app.isLoggedIn()" [routerLink]="decodedToken['role']=='coach' ? 'coach-dashbord': 'my-account' "><fa-icon class="fa-2xl " [icon]="icon" ></fa-icon></a>
       <a routerLink="cart"><fa-icon class="fa-2xl" [icon]="cartIcon" style="margin-left: 8%;"></fa-icon></a>
       
     </div>

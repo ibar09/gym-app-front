@@ -6,6 +6,8 @@ import { UserService } from '../user/services/user.service';
 import { GlobalApp } from '../common/global';
 import { User } from '../user/types/user.interface';
 import { userEndpoints } from '../user/types/user-endpoints.interface';
+import { CoachService } from '../trainers/services/coach.service';
+import { coachEndpoints } from '../trainers/types/coach-endpoints.interface';
 
 @Component({
   selector: 'coach-dashboard',
@@ -18,9 +20,11 @@ export class CoachDashboardComponent implements OnInit{
     uploadedImage!: File;
     imageUrl!: string;
     user!: User;
+    decodedToken!:any;
     constructor(private router: Router,
                 private userService: UserService,
-                public app:GlobalApp) {
+                public app:GlobalApp,
+                private coachService:CoachService) {
                   this.display="none";
                 }
   
@@ -29,8 +33,8 @@ export class CoachDashboardComponent implements OnInit{
       if(localStorage.getItem('token'))
       {
         const helper = new JwtHelperService();
-        const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
-        this.userService.getUserByEmail(decodedToken['email']).subscribe(
+         this.decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
+        this.coachService.getUserByEmail(this.decodedToken['email']).subscribe(
           (res)=>{
             this.user=res; 
             if(this.user.image)
@@ -62,11 +66,11 @@ export class CoachDashboardComponent implements OnInit{
       this.uploadedImage=event.target.files[0];
       if(this.uploadedImage)
         {
-          this.userService.uploadUserPhoto(this.uploadedImage).subscribe(
+          this.coachService.uploadUserPhoto(this.uploadedImage).subscribe(
             (res)=>{
               
               
-              this.imageUrl=userEndpoints.getImage+this.uploadedImage.name;
+              this.imageUrl=coachEndpoints.getImage+this.uploadedImage.name;
               location.reload();
               
             },
