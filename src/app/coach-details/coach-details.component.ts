@@ -39,7 +39,8 @@ export class CoachDetailsComponent implements OnInit{
     });
   }
   pay():void{
-    const totalAmount = this.coach.ProgramPrice;
+    
+    const totalAmount = this.coach.programPrice;
     this.app.getUser().subscribe(
       (user:any)=>{
         if(user.solde<totalAmount)
@@ -58,7 +59,7 @@ export class CoachDetailsComponent implements OnInit{
         )
         this.order={totalAmount: totalAmount,
           isPaid: true,
-          products: []};
+          products:[]};
           this.orderService.addOrder(this.order).subscribe(
               (res)=>{this.toastr.success('Paiment Successful!');}
               

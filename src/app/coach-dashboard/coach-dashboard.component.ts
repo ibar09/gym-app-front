@@ -183,7 +183,7 @@ UpdateUser() {
     image: this.user.image,
     orders: this.user.orders,
     description: this.user.description,
-    ProgramPrice: this.user.ProgramPrice,
+    programPrice: this.user.programPrice,
     // Include any other properties you want to update
   };
 

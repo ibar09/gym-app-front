@@ -61,9 +61,11 @@ export class CartPageComponent  implements OnInit {
             
           }
         )
-        this.order={totalAmount: this.totalAmount,
+        this.order={
+          totalAmount: this.totalAmount,
           isPaid: true,
-          products: productIds};
+          products: productIds
+        };
           this.orderService.addOrder(this.order).subscribe(
               (res)=>{this.toastr.success('Paiment Successful!');}
               
