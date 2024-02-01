@@ -17,13 +17,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {TrainingComponent} from "./trainers/training/training.component";
 
 const APP_ROUTING: Routes = [
-  { path: 'adminPanel/customers', component: PychartComponent , pathMatch: 'full'},
-  { path: 'adminPanel/orders', component: OrderschartComponent , pathMatch: 'full'},
-  { path: 'adminPanel/products', component: ProductMangementComponent , pathMatch: 'full'},
-  { path: 'adminPanel/UserManagement', component: CustomersComponent , pathMatch: 'full'},
-  { path: 'adminPanel/CoachManagement', component: CustomersComponent , pathMatch: 'full'},
-  { path: 'adminPanel/Dashboard', component: AdminPanelDashboardComponent , pathMatch: 'full'},
-  {path: 'adminPanel/ordersManagement', component: OrdersMangementComponent , pathMatch: 'full'},
+
   { path: "", component: HomepageComponent },
   { path:"marketplace", component:MarketplaceComponent},
   { path:"login", component:LoginComponent},

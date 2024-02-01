@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {AdminPanelDashboardComponent} from "../admin-panel-dashboard/admin-panel-dashboard.component";
+import {ProductService} from "../../app/marketplace/services/product.service";
+import {UserService} from "../../app/user/services/user.service";
 
 export interface data {
   [key: string]: any;
@@ -12,11 +14,26 @@ export interface data {
   styleUrls: ['./pychart.component.css']
 })
 
-export class PychartComponent implements data{
+export class PychartComponent implements OnInit,data{
   chart: any;
   isButtonVisible = false;
   chartOptions: any;
-  constructor(private router: Router) {}
+
+  nb_users:number=5;
+  row_coaches :any[]=[];
+
+  constructor(private router: Router,private userService:UserService) {
+
+  }
+ngOnInit() {
+  this.userService.getUsers({page: 1, limit: 1000}).subscribe(
+      (result) => {
+        this.nb_users=result.items.length;
+        console.log(this.nb_users)
+
+
+      });
+  }
 
   visitorsChartDrilldownHandler = (e: any) => {
     const clickedSegment = e.dataPoint.name;
@@ -71,49 +88,12 @@ export class PychartComponent implements data{
       indexLabelPlacement: "inside",
       indexLabelFontColor: "white",
       dataPoints: [
-        { y: 551160, name: "Users", color: "black", indexLabel: "86.56%" },
-        { y: 329840, name: "Coaches", color: "red", indexLabel: "13.44%" }
+        {y: this.nb_users, name: "Users", color: "black", indexLabel: "86.56%"},
+        {y: 8, name: "Coaches", color: "red", indexLabel: "13.44%"}
       ]
     }],
-    "Users": [{
-      color: "black",
-      name: "Users",
-      type: "column",
-      dataPoints: [
-        { label: "Jan", y: 42600 },
-        { label: "Feb", y: 44960 },
-        { label: "Mar", y: 46160 },
-        { label: "Apr", y: 48240 },
-        { label: "May", y: 48200 },
-        { label: "Jun", y: 49600 },
-        { label: "Jul", y: 51560 },
-        { label: "Aug", y: 49280 },
-        { label: "Sep", y: 46800 },
-        { label: "Oct", y: 57720 },
-        { label: "Nov", y: 59840 },
-        { label: "Dec", y: 54400 }
-      ]
-    }],
-    "Coaches": [{
-      color: "red",
-      name: "coaches",
-      type: "column",
-      dataPoints: [
-        { label: "Jan", y: 21800 },
-        { label: "Feb", y: 25040 },
-        { label: "Mar", y: 23840 },
-        { label: "Apr", y: 24760 },
-        { label: "May", y: 25800 },
-        { label: "Jun", y: 26400 },
-        { label: "Jul", y: 27440 },
-        { label: "Aug", y: 29720 },
-        { label: "Sep", y: 29200 },
-        { label: "Oct", y: 31280 },
-        { label: "Nov", y: 33160 },
-        { label: "Dec", y: 31400 }
-      ]
-    }]
-  };
+  }
+
 
 
 

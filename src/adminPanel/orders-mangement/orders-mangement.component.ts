@@ -7,11 +7,11 @@ import {OrderService} from "../../app/cart/services/order.service";
   styleUrls: ['./orders-mangement.component.css']
 })
 export class OrdersMangementComponent {
-  IdValue:number=0;
-  OrderedBy:string="";
-  PriceValue:number=0;
-  CreationDate:string='';
-  StateValue:string="";
+  products?: number[] | any[];
+  OrderedBy!:string;
+  PriceValue!:number;
+  StateValue!:boolean;
+  CreationDate!:string;
   selectedFilters: string[] = [];
   row :any[]=[];
 
@@ -20,7 +20,6 @@ export class OrdersMangementComponent {
   {
     this.orderService.getOrders().subscribe(
         (result) => {
-          console.log(result)
           this.row = result;
 
         }
@@ -95,16 +94,16 @@ export class OrdersMangementComponent {
           const filteredRows = this.row.sort((a:any, b:any) => a.id - b.id);
           return filteredRows;
         } else if (filter === 'PriceAsc') {
-          const filteredRows = this.row.sort((a:any, b:any) => a.Price - b.Price);
+          const filteredRows = this.row.sort((a:any, b:any) => a.totalAmount - b.totalAmount);
           return filteredRows;
 
         }
         else if (filter === 'PriceDesc') {
-          const filteredRows = this.row.sort((a:any, b:any) => b.Price - a.Price);
+          const filteredRows = this.row.sort((a:any, b:any) => b.totalAmount - a.totalAmount);
           return filteredRows;
 
         }else if (filter === 'creationDate') {
-          const filteredRows = this.row.sort((a:any, b:any) => new Date(a.CreationDate).getTime() - new Date(b.CreationDate).getTime());
+          const filteredRows = this.row.sort((a:any, b:any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
           return filteredRows;
 
         }
@@ -122,49 +121,68 @@ export class OrdersMangementComponent {
       this.selectedFilters.push(property);
     }
   }
+
   addOrder() {
     let obj = {
-      id: 0,
-      OrderedBy:'',
-      Price: 0,
-      CreationDate:'',
-      StateValue:'',
+      totalAmount:0,
+      isPaid:true,
 
     }
-    obj.id=this.IdValue;
-    obj.OrderedBy= this.OrderedBy;
-    obj.Price=this.PriceValue;
-    obj.CreationDate= this.CreationDate;
-    obj.StateValue= this.StateValue;
 
-    this.row.push(obj);
-    console.log(this.row)
+    obj.totalAmount=this.PriceValue;
+    obj.isPaid=this.StateValue;
+    this.orderService.addOrder(obj).subscribe(
+        (result) => {
+          this.updaterow();
+
+        },(error)=>
+        {
+          console.log(error)
+        }
+    )
   }
 
-  editOrder(): void {
-    const orderIndex = this.row.findIndex(user => user.id ===+this.IdValue);
 
-    if (orderIndex !== -1) {
-      // Update the user properties
-      if (this.OrderedBy != '')
-        this.row[orderIndex].OrderedBy = this.OrderedBy;
-      if (this.PriceValue !=0)
-        this.row[orderIndex].Price = this.PriceValue;
-      if (this.CreationDate !='')
-        this.row[orderIndex].CreationDate = this.CreationDate;
-      if (this.StateValue !='')
-        this.row[orderIndex].StateValue = this.StateValue;
+  editOrder(order:any): void {
+    const i = this.row.findIndex(orderRow => orderRow.id ===+order.id);
+    const orderId=this.row[i].id;
+    const updatedOrder=this.row[i]
 
+    if (i !== -1) {
+        updatedOrder.isPaid = this.StateValue;
+      if (this.PriceValue != 0)
+        updatedOrder.totalAmount = this.PriceValue;
+
+
+      this.orderService.updateOrder(orderId,updatedOrder).subscribe(
+          (result) => {
+            this.updaterow();
+          },
+          (error)=>{
+            console.log(error);
+          }
+      )
     }
+
   }
-  deleteRow(x:any){
+
+
+
+
+  deleteRow(order:any){
     var delBtn = confirm(" Do you want to delete ?");
     if ( delBtn == true ) {
-      this.row.splice(x, 1 );
+      this.orderService.deleteOrder(order.id).subscribe(
+          (result) => {
+            this.updaterow();
+          },
+          (error)=>{
+            console.log(error);
+          }
+      )
+
     }
-  }
-
-
+    }
 
 
 }

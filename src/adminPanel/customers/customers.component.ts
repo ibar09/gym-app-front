@@ -16,7 +16,6 @@ import {constants} from "../../app/common/constants";
 })
 export class CustomersComponent implements OnInit{
   UrlValue:string="";
-  IdValue:number=0;
   nameValue:string="";
   ageValue:number=0;
   BalanceValue:number=0;
@@ -123,6 +122,7 @@ ngOnInit() {
       password:'',
       solde:0,
       image: '',
+      orders:[]
     }
     user.name=this.nameValue;
     user.lastName=this.lastnameValue;
@@ -145,18 +145,26 @@ ngOnInit() {
   }
 
    editUser(user:any): void {
-     const i = this.row.findIndex(user => user.name ===this.nameValue);
+     const i = this.row.findIndex(user => user.email ===this.EmailValue);
      const userId=this.row[i].id;
      const updatedUser=this.row[i]
 
      if (i !== -1) {
        // Update the user properties
-       // if (this.nameValue != '')
-       //   this.row[userIndex].name = this.nameValue;
        if (this.UrlValue != '')
          updatedUser.image = this.UrlValue;
+       if (this.nameValue != '')
+         updatedUser.name = this.nameValue;
+       if (this.lastnameValue != '')
+         updatedUser.lastName = this.lastnameValue;
+       if (this.ageValue != 0)
+         updatedUser.age = this.ageValue;
        if (this.BalanceValue != 0)
          updatedUser.solde = this.BalanceValue;
+       if (this.PhoneNumberValue != 0)
+         updatedUser.phoneNumber = this.PhoneNumberValue;
+
+
 
 
        this.userService.updateUser(userId,updatedUser).subscribe(

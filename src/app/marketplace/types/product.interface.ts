@@ -1,6 +1,6 @@
 export interface Product {
-  uuid:string;
-    name: string;
+  uuid?:string;
+  name: string;
   description: string;
 
   photo: string;

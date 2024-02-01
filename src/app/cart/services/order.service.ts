@@ -24,7 +24,7 @@ export class OrderService {
   }
 
   updateOrder(orderId: number, updatedOrder: Order): Observable<Order> {
-    return this.http.put<Order>(orderEndpoints.update+orderId.toString(), updatedOrder);
+    return this.http.patch<Order>(orderEndpoints.update+orderId.toString(), updatedOrder);
   }
 
   deleteOrder(orderId: number): Observable<void> {

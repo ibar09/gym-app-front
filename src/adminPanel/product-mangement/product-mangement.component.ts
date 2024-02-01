@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ProductService} from "../../app/marketplace/services/product.service";
 
 @Component({
   selector: 'app-product-mangement',
@@ -7,54 +8,27 @@ import { Component } from '@angular/core';
 })
 export class ProductMangementComponent {
 
-  UrlValue:string="";
-  IdValue:number=0;
-  ProductNameValue:string="";
-  PriceValue:number=0;
+  UrlValue!:string;
+  ProductNameValue!:string;
+  DescriptionValue!:string;
+  PriceValue!:number;
+  productType!:string;
+
   selectedFilters: string[] = [];
+  row :any[]=[];
+  updaterow()
+  {
+    this.productService.getProducts({page: 1, limit: 1000}).subscribe(
+        (result) => {
+          console.log(result)
+          this.row = result.items;
 
-
-  row = [
-    { img_url:'https://per4mbetter.com/cdn/shop/products/WheyProtein_Brownie_900g_copy_2000x_57cf41d3-9991-4daf-8957-2a809da2ea2f_2000x.png?v=1637252082',
-      id : 1,
-      ProductName: 'PER4M WHEY PROTEIN',
-      Price:169
-    },
-    {
-      img_url: 'https://i5.walmartimages.com/seo/Body-Fortress-Whey-Protein-Powder-Chocolate-Flavored-Gluten-Free-60-G-Protein-Per-Serving-5-Lbs_24e2fcbf-c74d-42bd-bd8d-394981b43483.504a66284591137690e45024fcada579.png',
-      id : 2,
-      ProductName: 'Whey Protein Powder, Chocolate Flavored',
-      Price:89,
-
-    },
-    {
-      img_url: 'https://m.media-amazon.com/images/I/71XzANehVAL.__AC_SX300_SY300_QL70_FMwebp_.jpg',
-      id : 3,
-      ProductName: 'Optimum Nutrition Gold Standard 100% Whey',
-      Price:59,
-
-    },
-    { img_url:'https://per4mbetter.com/cdn/shop/products/WheyProtein_Brownie_900g_copy_2000x_57cf41d3-9991-4daf-8957-2a809da2ea2f_2000x.png?v=1637252082',
-      id : 4,
-      ProductName: 'PER4M WHEY PROTEIN',
-      Price:129
-    },
-    {
-      img_url: 'https://m.media-amazon.com/images/I/71XzANehVAL.__AC_SX300_SY300_QL70_FMwebp_.jpg',
-      id : 5,
-      ProductName: 'Optimum Nutrition Gold Standard 100% Whey',
-      Price:269,
-
-    },
-    {
-      img_url: 'https://i5.walmartimages.com/seo/Body-Fortress-Whey-Protein-Powder-Chocolate-Flavored-Gluten-Free-60-G-Protein-Per-Serving-5-Lbs_24e2fcbf-c74d-42bd-bd8d-394981b43483.504a66284591137690e45024fcada579.png',
-      id : 6,
-      ProductName: 'Whey Protein Powder, Chocolate Flavored',
-      Price:59,
-
-    },
-  ];
-
+        }
+    )
+  }
+  constructor(private productService:ProductService) {
+    this.updaterow();
+  }
 
   filterRows(): any[] {
     if (this.selectedFilters.length === 0) {
@@ -65,10 +39,14 @@ export class ProductMangementComponent {
     // Filter rows based on the selected checkboxes
     return this.row.filter(item =>
       this.selectedFilters.some(filter => {
+
+
+
+
         if (filter === 'ProductName') {
           const filteredRows = this.row.sort((a, b) => {
-            const nameA = a.ProductName.charAt(0).toLowerCase();
-            const nameB = b.ProductName.charAt(0).toLowerCase();
+            const nameA = a.name.charAt(0).toLowerCase();
+            const nameB = b.name.charAt(0).toLowerCase();
 
             if (nameA < nameB) {
               return -1;
@@ -83,7 +61,12 @@ export class ProductMangementComponent {
           const filteredRows = this.row.sort((a:any, b:any) => a.id - b.id);
           return filteredRows;
         } else if (filter === 'Price') {
-          const filteredRows = this.row.sort((a:any, b:any) => a.balance - b.balance);
+          const filteredRows = this.row.sort((a:any, b:any) => a.price - b.price);
+          return filteredRows;
+
+        }
+        else if (filter === 'creationDate') {
+          const filteredRows = this.row.sort((a:any, b:any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
           return filteredRows;
 
         }
@@ -105,37 +88,69 @@ export class ProductMangementComponent {
 
   addProduct() {
     let obj = {
-      img_url:'',
-      id: 0,
-      ProductName: '',
-      Price:0,
+      photo:'',
+      name: '',
+      price:0,
+      description:'',
+      productType:'Nutrition'
 
     }
-    obj.img_url=this.UrlValue;
-    obj.id= this.IdValue;
-    obj.ProductName=this.ProductNameValue;
-    obj.Price= this.PriceValue;
+    obj.photo=this.UrlValue;
+    obj.name=this.ProductNameValue;
+    obj.price= this.PriceValue;
+    obj.description=this.DescriptionValue;
+    console.log('product type est:===>'+this.productType)
+    // obj.productType=this.productType;
+    this.productService.addProduct(obj).subscribe(
+        (result) => {
+          this.updaterow();
 
-    this.row.push(obj)
+        },(error)=>
+        {
+          console.log(error)
+        }
+    )
   }
 
-  editProduct(): void {
-    const userIndex = this.row.findIndex(user => user.id ===+this.IdValue);
+  editProduct(product:any): void {
+    const i = this.row.findIndex(productRow => productRow.id ===+product.id);
+    const productId=this.row[i].id;
+    const updatedProduct=this.row[i]
 
-    if (userIndex !== -1) {
-      // Update the user properties
+    if (i !== -1) {
       if (this.ProductNameValue != '')
-        this.row[userIndex].ProductName = this.ProductNameValue;
+        updatedProduct.name = this.ProductNameValue;
       if (this.UrlValue != '')
-        this.row[userIndex].img_url = this.UrlValue;
+        updatedProduct.photo = this.UrlValue;
+      console.log(this.UrlValue)
       if (this.PriceValue != 0)
-        this.row[userIndex].Price = this.PriceValue;
+        updatedProduct.price = this.PriceValue;
+      if (this.DescriptionValue !='')
+        updatedProduct.description = this.DescriptionValue;
+      if (this.productType !='')
+        updatedProduct.productType = this.productType;
+
+      this.productService.updateProduct(+productId,updatedProduct).subscribe(
+          (result) => {
+            this.updaterow();
+          },
+          (error)=>{
+            console.log(error);
+          }
+      )
     }
   }
   deleteRow(x:any){
     var delBtn = confirm(" Do you want to delete ?");
     if ( delBtn == true ) {
-      this.row.splice(x, 1 );
+      this.productService.deleteProduct(x.id).subscribe(
+          (result) => {
+            this.updaterow();
+          },
+          (error)=>{
+            console.log(error);
+          }
+      )
     }
   }
 

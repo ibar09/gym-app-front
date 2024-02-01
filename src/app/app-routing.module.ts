@@ -24,13 +24,13 @@ const routes: Routes = [
   { path:"register", component:RegisterComponent},
   {path:"my-account", component:UseraccountComponent,canActivate:[AuthGuard]},
   {path:"trainers",component:TrainingComponent},
-  { path: 'adminPanel/customers', component: PychartComponent , pathMatch: 'full'},
-  { path: 'adminPanel/orders', component: OrderschartComponent , pathMatch: 'full'},
-  { path: 'adminPanel/products', component: ProductMangementComponent , pathMatch: 'full'},
-  { path: 'adminPanel/UserManagement', component: CustomersComponent , pathMatch: 'full'},
-  { path: 'adminPanel/CoachManagement', component: CustomersComponent , pathMatch: 'full'},
-  { path: 'adminPanel/Dashboard', component: AdminPanelDashboardComponent , pathMatch: 'full'},
-  {path: 'adminPanel/ordersManagement', component: OrdersMangementComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/customers', component: PychartComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/orders', component: OrderschartComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/products', component: ProductMangementComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/UserManagement', component: CustomersComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/CoachManagement', component: CustomersComponent , pathMatch: 'full'},
+  // { path: 'adminPanel/Dashboard', component: AdminPanelDashboardComponent , pathMatch: 'full'},
+  // {path: 'adminPanel/ordersManagement', component: OrdersMangementComponent , pathMatch: 'full'},
 ];
 
 @NgModule({
