@@ -8,6 +8,7 @@
       <h5 class="card-title">{{product.name}}</h5>
       <p class="item-price">{{product.price}} DT</p>
       <button  class="btn btn-primary" [disabled]="productInCart" (click)="addItemToCart()">{{ productInCart? 'Item already in the Cart': 'Add to Cart'}}</button>
+      <button  class="btn btn-primary"  (click)="viewDetails()">ViewDetails</button>
     </div>
   </div>
   

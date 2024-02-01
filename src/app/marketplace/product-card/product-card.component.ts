@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../types/product.interface';
 import { GlobalApp } from 'src/app/common/global';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'product-card',
@@ -13,7 +14,9 @@ export class ProductCardComponent implements OnInit{
   cartItems!:Product[];
   productInCart:boolean=false;
   constructor(private productService:ProductService,
-    private app:GlobalApp)
+              private app:GlobalApp,
+              private router:Router
+    )
   {
     
   }
@@ -42,6 +45,8 @@ export class ProductCardComponent implements OnInit{
   {
     this.productInCart=true;
   }
-  
+  viewDetails() {
+    this.router.navigate(['productdetails', this.product.id]);
+  }
 
 }

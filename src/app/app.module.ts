@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
     TrainingComponent,
     TrainerListComponent,
     CoachDashboardComponent,
+    ProductDetailsComponent,
     
   ],
   imports: [
