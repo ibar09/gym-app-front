@@ -1,7 +1,7 @@
 import {Order} from "../../cart/types/order.interface";
 
 export interface User {
-    id:number;
+    id?:number;
     name:string;
     lastName:string;
     age:number;

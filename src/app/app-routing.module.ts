@@ -36,6 +36,8 @@ const routes: Routes = [
   { path: 'adminPanel/UserManagement', component: CustomersComponent , pathMatch: 'full'},
   { path: 'adminPanel/CoachManagement', component: CustomersComponent , pathMatch: 'full'},
   { path: 'adminPanel/Dashboard', component: AdminPanelDashboardComponent , pathMatch: 'full'},
+  { path: 'adminPanel/ordersManagement', component: OrdersMangementComponent , pathMatch: 'full'},
+
   {path:"cart", component:CartPageComponent},
   {path:"coach-dashbord", component:CoachDashboardComponent},
   {path:"productdetails/:id", component:ProductDetailsComponent},

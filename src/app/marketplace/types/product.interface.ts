@@ -1,9 +1,8 @@
 export interface Product {
+  id?:number;
   uuid?:string;
   name: string;
-  uuid:string;
-  id:number;
-    name: string;
+  
 
   description: string;
 

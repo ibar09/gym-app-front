@@ -22,7 +22,7 @@ import { TrainerCardComponent } from './trainers/trainer-card/trainer-card.compo
 import { TrainingComponent } from './trainers/training/training.component';
 import { TrainerListComponent } from './trainers/trainer-list/trainer-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AdminPanelComponent } from '../adminPanel/admin-panel/admin-panel.component';
+import { AdminPanelComponent } from 'src/adminPanel/admin-panel/admin-panel.component';
 import { AdminPanelDashboardComponent } from '../adminPanel/admin-panel-dashboard/admin-panel-dashboard.component';
 import { AdminPanelSideNavComponent } from '../adminPanel/admin-panel-side-nav/admin-panel-side-nav.component';
 import { AdminPanelHeaderComponent } from '../adminPanel/admin-panel-header/admin-panel-header.component';
@@ -48,6 +48,7 @@ import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.compo
 import { ToastrModule } from 'ngx-toastr';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CoachDetailsComponent } from './coach-details/coach-details.component';
+import { CartModule } from './cart/cart.module';
 
 
 @NgModule({
@@ -91,39 +92,18 @@ import { CoachDetailsComponent } from './coach-details/coach-details.component';
     CartModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
-
-  ],
-    imports: [
-        BrowserModule,
         MatSidenavModule,
         MatToolbarModule,
         MatMenuModule,
         MatIconModule,
         MatDividerModule,
         MatListModule,
-        BrowserAnimationsModule,
         NgApexchartsModule,
         CanvasJSAngularChartsModule,
-        FormsModule,
-      MatFormFieldModule,
-      BrowserModule,
-      MarketplaceModule,
-      HttpClientModule,
-      FormsModule,
-      FontAwesomeModule,
-      NgbModule,
-      AppRoutingModule,
-      CanvasJSAngularChartsModule,
-      MatSidenavModule,
-      MatToolbarModule,
-      MatMenuModule,
-      MatIconModule,
-      MatDividerModule,
-      MatListModule,
-      NgApexchartsModule,
       MatFormFieldModule,
 
-    ],
+  ],
+
 
   providers: [AuthentificationInterceptorProvider,GlobalApp],
   bootstrap: [AppComponent]
