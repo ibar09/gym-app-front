@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {Routing} from './app.routing';
 import { AppComponent } from './app.component';
 import { MarketplaceModule } from './marketplace/marketplace.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -72,7 +71,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     DashboardschartComponent,
   ],
     imports: [
-        Routing,
         BrowserModule,
         MatSidenavModule,
         MatToolbarModule,
