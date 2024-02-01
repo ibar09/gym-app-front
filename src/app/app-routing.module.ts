@@ -16,6 +16,12 @@ import {PychartComponent} from "../adminPanel/pychart/pychart.component";
 import {ProductMangementComponent} from "../adminPanel/product-mangement/product-mangement.component";
 import {OrdersMangementComponent} from "../adminPanel/orders-mangement/orders-mangement.component";
 import {OrderschartComponent} from "../adminPanel/orderschart/orderschart.component";
+import { FactureComponent } from './cart/facture/facture.component';
+import { CartPageComponent } from './cart/cart-page/cart-page.component';
+import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CoachDetailsComponent } from './coach-details/coach-details.component';
+
 
 const routes: Routes = [
   { path: "", component: HomepageComponent },
@@ -30,7 +36,10 @@ const routes: Routes = [
   { path: 'adminPanel/UserManagement', component: CustomersComponent , pathMatch: 'full'},
   { path: 'adminPanel/CoachManagement', component: CustomersComponent , pathMatch: 'full'},
   { path: 'adminPanel/Dashboard', component: AdminPanelDashboardComponent , pathMatch: 'full'},
-
+  {path:"cart", component:CartPageComponent},
+  {path:"coach-dashbord", component:CoachDashboardComponent},
+  {path:"productdetails/:id", component:ProductDetailsComponent},
+  {path:"coachdetails/:id", component:CoachDetailsComponent},
 ];
 
 @NgModule({

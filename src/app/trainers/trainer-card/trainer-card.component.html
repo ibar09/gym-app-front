@@ -1,13 +1,14 @@
 
-<div class="card item" >
+<div   class="card item cursor-pointer" >
     <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-    <div class="img-box">
+    <div class="img-box" (click)="viewDetails()">
       <img class="card-img-top" src={{coach.image}} alt="Card image cap">
     </div>
       <div class="card-body">
-        <h5 class="card-title">{{coach.name}} {{coach.lastName}}</h5>
-        <p class="item-price">{{coach.ProgramPrice}} DT</p>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
+        <h5 class="card-title" (click)="viewDetails()">{{coach.name}} {{coach.lastName}}</h5>
+        <p class="item-price" (click)="viewDetails()">{{coach.programPrice}} DT</p>
+        <button href="#" class="btn btn-primary" (click)="pay()">Pay</button>
+        
       </div>
     </div>
     

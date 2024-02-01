@@ -6,6 +6,9 @@ import { UserService } from '../user/services/user.service';
 import { GlobalApp } from '../common/global';
 import { User } from '../user/types/user.interface';
 import { userEndpoints } from '../user/types/user-endpoints.interface';
+import { CoachService } from '../trainers/services/coach.service';
+import { coachEndpoints } from '../trainers/types/coach-endpoints.interface';
+import { Order } from '../cart/types/order.interface';
 
 @Component({
   selector: 'coach-dashboard',
@@ -14,13 +17,17 @@ import { userEndpoints } from '../user/types/user-endpoints.interface';
 })
 export class CoachDashboardComponent implements OnInit{
     display: string;
-    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'trainingProgram' | 'profileSettings' = "orders";
+    selectedSection: 'orders' | 'Clients' | 'clientDetails' | 'trainingProgram' | 'addexercice' | 'profileSettings' = "orders";
     uploadedImage!: File;
     imageUrl!: string;
-    user!: User;
+    user!: any;
+    decodedToken!:any;
+    rechargeAmount!:number;
+    
     constructor(private router: Router,
                 private userService: UserService,
-                public app:GlobalApp) {
+                public app:GlobalApp,
+                private coachService:CoachService) {
                   this.display="none";
                 }
   
@@ -29,8 +36,8 @@ export class CoachDashboardComponent implements OnInit{
       if(localStorage.getItem('token'))
       {
         const helper = new JwtHelperService();
-        const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
-        this.userService.getUserByEmail(decodedToken['email']).subscribe(
+         this.decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
+        this.coachService.getUserByEmail(this.decodedToken['email']).subscribe(
           (res)=>{
             this.user=res; 
             if(this.user.image)
@@ -55,18 +62,18 @@ export class CoachDashboardComponent implements OnInit{
       }
     }
     
-    navigateTo(section: 'profileSettings' | 'orders' | 'Clients'): void {
+    navigateTo(section: 'profileSettings' | 'orders' | 'Clients' | 'addexercice' ): void {
       this.selectedSection = section;
     }
     onFileSelected(event: any): void {
       this.uploadedImage=event.target.files[0];
       if(this.uploadedImage)
         {
-          this.userService.uploadUserPhoto(this.uploadedImage).subscribe(
+          this.coachService.uploadUserPhoto(this.uploadedImage).subscribe(
             (res)=>{
               
               
-              this.imageUrl=userEndpoints.getImage+this.uploadedImage.name;
+              this.imageUrl=coachEndpoints.getImage+this.uploadedImage.name;
               location.reload();
               
             },
@@ -78,7 +85,14 @@ export class CoachDashboardComponent implements OnInit{
         }
       
     }
-   
+    ChargeAccount()
+    {
+      const updatedSolde = this.user.solde +this.rechargeAmount;
+    
+      this.user.solde = updatedSolde;
+      this.coachService.updateCoach((this.user as any).id,this.user).subscribe();
+      this.onCloseHandled();
+    }
   
     logoutandnavigateToHome() {
       this.app.logOut();
@@ -153,6 +167,35 @@ viewTrainingProgram(client: any): void {
   this.selectedClientDetails = client;
   this.selectedSection = 'trainingProgram';
   console.log(client);
+}
+
+UpdateUser() { 
+  const updatedUser: Coach = {
+    id: this.user.id,
+    name: this.user.name,
+    lastName: this.user.lastName,
+    age: this.user.age,
+    email: this.user.email,
+    phoneNumber: this.user.phoneNumber,
+    address: this.user.address,
+    password: this.user.password,
+    solde: this.user.solde,
+    image: this.user.image,
+    orders: this.user.orders,
+    description: this.user.description,
+    programPrice: this.user.programPrice,
+    // Include any other properties you want to update
+  };
+
+  this.coachService.updateCoach((this.user as any).id, updatedUser).subscribe(
+    (updatedUser) => {
+      console.log('User updated successfully', updatedUser);
+    },
+    (error) => {
+      console.error('Error updating user', error);
+      // Handle error if needed
+    }
+  );
 }
 
 }

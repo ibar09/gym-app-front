@@ -18,6 +18,12 @@ export class CoachService {
     return this.http.get<SerachResult<Coach>>(coachEndpoints.findAll,{params: {page : searchRequest.page,limit:searchRequest.limit}});
   }
 
+  getUserByEmail(email:string)
+  {
+    
+    return this.http.get<Coach>(coachEndpoints.findByEmail+email);
+  }
+
   // Retrieve a single product by ID
   getCoachById(coachId: number): Observable<Coach> {
     return this.http.get<Coach>(coachEndpoints.findById+coachId.toString());
@@ -37,5 +43,13 @@ export class CoachService {
   deleteCoach(coachId: number): Observable<void> {
  
     return this.http.delete<void>(coachEndpoints.delete+coachId.toString());
+  }
+  uploadUserPhoto(file:File){
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(coachEndpoints.upload,formData);
+  }
+  getUserImage(imageName: string){
+      return this.http.get<any>(coachEndpoints.getImage+imageName);
   }
 }

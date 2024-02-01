@@ -14,8 +14,13 @@ export class AuthService {
   {
     return this.http.post<any>(authEndpoints.login,loginData)
   }
-  register(user:User){
-    return this.http.post<any>(authEndpoints.register,user);
+  register(user:any,check:boolean){
+    if(check)
+    {
+      return this.http.post<any>(authEndpoints.coachRegister,user);
+    }
+    else
+    return this.http.post<any>(authEndpoints.userRegister,user);
   }
 
 }

@@ -43,6 +43,12 @@ import { OrdersMangementComponent } from '../adminPanel/orders-mangement/orders-
 import { OrderschartComponent } from '../adminPanel/orderschart/orderschart.component';
 import { DashboardschartComponent } from '../adminPanel/dashboardschart/dashboardschart.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
+
+import { ToastrModule } from 'ngx-toastr';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CoachDetailsComponent } from './coach-details/coach-details.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +75,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     OrdersMangementComponent,
     OrderschartComponent,
     DashboardschartComponent,
+    CoachDashboardComponent,
+    ProductDetailsComponent,
+    CoachDetailsComponent,
+    
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MarketplaceModule,
+    HttpClientModule,
+    FormsModule,
+    FontAwesomeModule,
+    NgbModule,
+    CartModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+
   ],
     imports: [
         BrowserModule,

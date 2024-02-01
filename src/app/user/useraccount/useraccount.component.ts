@@ -21,7 +21,7 @@ export class UseraccountComponent implements OnInit{
   selectedSection: 'orders' | 'trainingProgram' | 'profileSettings' = "orders";
   uploadedImage!: File;
   imageUrl!: string;
-  user!:User;
+  user!:any;
   orders!:Order[];
   rechargeAmount!:number;
   constructor(private router: Router,
@@ -37,7 +37,9 @@ export class UseraccountComponent implements OnInit{
     {
       const helper = new JwtHelperService();
       const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
-      this.userService.getUserByEmail(decodedToken['email']).subscribe(
+      if(decodedToken['role']=="coach")
+      {
+          this.userService.getUserByEmail(decodedToken['email']).subscribe(
         (res)=>{
           this.user=res; 
           if(this.user.image)
@@ -54,6 +56,27 @@ export class UseraccountComponent implements OnInit{
           
         }
       )
+      }
+      else
+      {
+        this.userService.getUserByEmail(decodedToken['email']).subscribe(
+          (res)=>{
+            this.user=res; 
+            if(this.user.image)
+            {
+              this.imageUrl=userEndpoints.getImage+this.user.image
+            }
+            else
+            {
+              this.imageUrl="assets/default_pic.jpg";
+            }
+          },
+          (err)=> {
+            console.log(err);
+            
+          }
+        )
+      }
     }
     else
     {
@@ -64,7 +87,7 @@ export class UseraccountComponent implements OnInit{
       (res)=> {this.orders=res;
       }
     )
-    
+  
   }
   
   navigateTo(section: 'profileSettings' | 'orders' | 'trainingProgram'): void {
@@ -96,20 +119,7 @@ export class UseraccountComponent implements OnInit{
     this.app.logOut();
     this.router.navigate(['']);
   }
-  //order example:
-  // orders = [
-  //   {
-  //     orderID: 'order45754',
-  //     items: [
-  //       { quantity: 1, name: 'Protein Power' },
-  //       { quantity: 2, name: 'Creatine' }
-  //     ],
-  //     amount: '756dt',
-  //     date: '22-2024-1'
-  //   },
-  //   // Add more orders as needed
-  // ];
-  // Example data for training program
+ 
   trainingProgram = [
     { date: '1-22-2024', exercise: ['Squats','push ups'] },
     { date: '1-23-2024', exercise: 'Push-ups' },
@@ -140,16 +150,45 @@ onSubmit() {
 openModal() {
 this.display = "block";
 }
+
 onCloseHandled() {
 this.display = "none";
 }
-ChargeAccount()
-{
+
+ChargeAccount() {
   const updatedSolde = this.user.solde +this.rechargeAmount;
 
   this.user.solde = updatedSolde;
   this.userService.updateUser((this.user as any).id,this.user).subscribe();
   this.onCloseHandled();
 }
+UpdateUser() { 
+  const updatedUser: User = {
+    id: this.user.id,
+    name: this.user.name,
+    lastName: this.user.lastName,
+    age: this.user.age,
+    email: this.user.email,
+    phoneNumber: this.user.phoneNumber,
+    address: this.user.address,
+    password: this.user.password,
+    solde: this.user.solde,
+    image: this.user.image,
+    orders: this.user.orders
+    // Include any other properties you want to update
+  };
+
+  this.userService.updateUser((this.user as any).id, updatedUser).subscribe(
+    (updatedUser) => {
+      console.log('User updated successfully', updatedUser);
+    },
+    (error) => {
+      console.error('Error updating user', error);
+      // Handle error if needed
+    }
+  );
+}
+
+
 
 }

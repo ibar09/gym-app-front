@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { CoachService } from 'src/app/trainers/services/coach.service';
 import { UserService } from 'src/app/user/services/user.service';
 import { User } from 'src/app/user/types/user.interface';
 
@@ -11,17 +12,20 @@ import { User } from 'src/app/user/types/user.interface';
 })
 export class RegisterComponent {
 
-  newUser: User;
+  newUser: any;
   message!: string;
   display!: string;
   successful:boolean;
   bodyMessage!: string;
   registerButtonText!: string;
   uploadedImage!: File;
+  coachCheck!:boolean;
   constructor(private userService:UserService,
     private authService:AuthService,
-    private router: Router,){
+    private router: Router,
+    private coachService:CoachService){
     this.newUser={
+      id:0,
       name:"",
     lastName:"",
     age:0,
@@ -37,22 +41,30 @@ export class RegisterComponent {
   }
   register(){
 
+    this.authService.register(this.newUser,this.coachCheck).subscribe(
+      (res)=> {
+      this.message="Registration was successful!"
 
-    this.authService.register(this.newUser).subscribe(
-      (res)=> {this.message="Registration was successful!"
       this.registerButtonText="Continue";
       if(this.uploadedImage)
       {
+        if(this.coachCheck)
+        this.coachService.uploadUserPhoto(this.uploadedImage).subscribe()
+
+        else
         this.userService.uploadUserPhoto(this.uploadedImage).subscribe()
-      }
+
+      }      
 
       this.successful=true;
       this.openModal();
     },
-      (err)=> {this.message="Registration Failed!";
+      (err)=> {
+        console.log(err);
+        
+      this.message="Registration Failed!";
       this.bodyMessage="An account with this email address already exists!"
       this.registerButtonText="Try Again";
-      console.log(this.message);
       this.openModal();
       }
 
