@@ -16,7 +16,7 @@ export class OrderService {
     return this.http.get<Order>(orderEndpoints.findById+orderId.toString());
   }
   getOrders(): Observable<Order[]>{
-    return this.http.get<Order[]>(orderEndpoints.findById);
+    return this.http.get<Order[]>(orderEndpoints.findAll);
   }
 
   addOrder(Order: Order): Observable<Order> {
@@ -24,11 +24,11 @@ export class OrderService {
   }
 
   updateOrder(orderId: number, updatedOrder: Order): Observable<Order> {
-    return this.http.put<Order>(orderEndpoints.update+orderId.toString(), updatedOrder);
+    return this.http.patch<Order>(orderEndpoints.update+orderId.toString(), updatedOrder);
   }
 
   deleteOrder(orderId: number): Observable<void> {
- 
+
     return this.http.delete<void>(orderEndpoints.delete+orderId.toString());
   }
   getOrdersByEmail()

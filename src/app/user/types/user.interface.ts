@@ -1,13 +1,13 @@
-import { Order } from "src/app/cart/types/order.interface";
+import {Order} from "../../cart/types/order.interface";
 
 export interface User {
     id:number;
     name:string;
     lastName:string;
     age:number;
-    phoneNumber:number; 
+    phoneNumber:number;
     email:string;
-    address:string;   
+    address:string;
     password:string;
     solde:number;
     image: string;

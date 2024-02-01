@@ -1,0 +1,51 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+
+
+.king {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 85%;
+  transition: transform 0.3s ease; /* Smooth transition for the 'transform' property */
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.bi {
+  vertical-align: -.125em;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.dropdown-toggle { outline: 0; }
+
+
+.toggle-button {
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  transition: transform 0.3s ease; /* Smooth transition for the 'transform' property */
+
+}
+
+.toggle{
+  transform: translateX(-470%);
+}
+.custom-btn {
+  padding: 1px 1px; /* Adjust padding as needed */
+  width: auto; /* Let the button adjust its width based on content */
+  font-size: small;
+}
