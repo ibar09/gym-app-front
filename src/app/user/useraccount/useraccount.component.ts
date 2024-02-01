@@ -8,6 +8,8 @@ import { constants } from 'src/app/common/constants';
 import { userEndpoints } from '../types/user-endpoints.interface';
 import { OrderService } from 'src/app/cart/services/order.service';
 import { Order } from 'src/app/cart/types/order.interface';
+import { CoachService } from 'src/app/trainers/services/coach.service';
+import { coachEndpoints } from 'src/app/trainers/types/coach-endpoints.interface';
 
 
 
@@ -21,13 +23,15 @@ export class UseraccountComponent implements OnInit{
   selectedSection: 'orders' | 'trainingProgram' | 'profileSettings' = "orders";
   uploadedImage!: File;
   imageUrl!: string;
-  user!:User;
+  user!:any;
   orders!:Order[];
   rechargeAmount!:number;
+  decodedToken!:any;
   constructor(private router: Router,
               private userService: UserService,
               public app:GlobalApp,
-              private orderService:OrderService) {
+              private orderService:OrderService,
+              private coachService:CoachService) {
                 this.display="none";
               }
 
@@ -36,24 +40,49 @@ export class UseraccountComponent implements OnInit{
     if(localStorage.getItem('token'))
     {
       const helper = new JwtHelperService();
-      const decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
-      this.userService.getUserByEmail(decodedToken['email']).subscribe(
-        (res)=>{
-          this.user=res; 
-          if(this.user.image)
-          {
-            this.imageUrl=userEndpoints.getImage+this.user.image
+      this.decodedToken=helper.decodeToken(localStorage.getItem('token') as string);
+      console.log(this.decodedToken['email']);
+      
+      if(this.decodedToken['role']=="coach")
+      {
+        this.coachService.getUserByEmail(this.decodedToken['email']).subscribe(
+          (res)=>{
+            this.user=res; 
+            if(this.user.image)
+            {
+              this.imageUrl=userEndpoints.getImage+this.user.image
+            }
+            else
+            {
+              this.imageUrl="assets/default_pic.jpg";
+            }
+          },
+          (err)=> {
+            console.log(err);
+            
           }
-          else
-          {
-            this.imageUrl="assets/default_pic.jpg";
+        )
+      }
+      else
+      {
+        this.userService.getUserByEmail(this.decodedToken['email']).subscribe(
+          (res)=>{
+            this.user=res; 
+            if(this.user.image)
+            {
+              this.imageUrl=userEndpoints.getImage+this.user.image
+            }
+            else
+            {
+              this.imageUrl="assets/default_pic.jpg";
+            }
+          },
+          (err)=> {
+            console.log(err);
+            
           }
-        },
-        (err)=> {
-          console.log(err);
-          
-        }
-      )
+        )
+      }
     }
     else
     {
@@ -74,19 +103,38 @@ export class UseraccountComponent implements OnInit{
     this.uploadedImage=event.target.files[0];
     if(this.uploadedImage)
       {
-        this.userService.uploadUserPhoto(this.uploadedImage).subscribe(
-          (res)=>{
-            
-            
-            this.imageUrl=userEndpoints.getImage+this.uploadedImage.name;
-            location.reload();
-            
-          },
-          (err)=>{
-            console.log(err);
-            
-          }
-        )
+        if(this.decodedToken['role']=="coach")
+        {
+          this.coachService.uploadUserPhoto(this.uploadedImage).subscribe(
+            (res)=>{
+              
+              
+              this.imageUrl=coachEndpoints.getImage+this.uploadedImage.name;
+              location.reload();
+              
+            },
+            (err)=>{
+              console.log(err);
+              
+            }
+          )
+        }
+        else
+        {
+          this.userService.uploadUserPhoto(this.uploadedImage).subscribe(
+            (res)=>{
+              
+              
+              this.imageUrl=userEndpoints.getImage+this.uploadedImage.name;
+              location.reload();
+              
+            },
+            (err)=>{
+              console.log(err);
+              
+            }
+          )
+        }
       }
     
   }

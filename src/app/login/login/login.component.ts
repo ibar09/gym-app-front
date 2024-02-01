@@ -36,6 +36,8 @@ onSubmit() {
       },
       (err)=>
       {
+        console.log(err);
+        
         this.loginMessage="Email or Password are Wrong";
         this.loginButtonText="Try Again";
 
