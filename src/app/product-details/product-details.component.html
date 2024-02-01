@@ -6,7 +6,7 @@
     </div>
     <div class="product-info">
       <h2 class="red-text fw-bolder">{{ product.name }}</h2>
-      
+      <p class="bold text-black-75">Type : {{ product.productType }}</p>
       <p class="description bold">{{ product.description }}</p>
       <p class="price">Price: {{ product.price }}dt</p>
       <button   [disabled]="productInCart" (click)="addItemToCart()">{{ productInCart? 'Item already in the Cart': 'Add to Cart'}}</button>

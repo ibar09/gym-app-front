@@ -1,0 +1,14 @@
+<!-- product-details.component.html -->
+
+<div class="product-details-container" *ngIf="coach">
+    <div class="product-image">
+      <img src="assets\product.jpg" alt="Product Image">
+    </div>
+    <div class="product-info">
+      <h2 class="red-text fw-bolder">{{ coach.name }}</h2>
+      <p class="description bold">{{ coach.description }}</p>
+      <p class="price" >Price: {{ coach.ProgramPrice }}dt</p>
+      <button (click)="pay()">Pay</button>
+    </div>
+  </div>
+  

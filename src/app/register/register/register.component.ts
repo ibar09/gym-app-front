@@ -22,6 +22,7 @@ export class RegisterComponent {
     private authService:AuthService,
     private router: Router,){
     this.newUser={
+      id:0,
       name:"",
     lastName:"",
     age:0,

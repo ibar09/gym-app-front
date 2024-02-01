@@ -162,7 +162,8 @@
         <td>{{ order.uuid!.slice(4,12)}}</td>
         <td>
           <ul>
-            <li *ngFor="let item of order.products "> {{ item.name }}</li>
+            <li *ngFor="let item of order.products  "> {{ item.name}} </li>
+            <li  *ngIf="!order.products ||order.products.length === 0">Private Coaching</li>
           </ul>
         </td>
         <td>{{ order.totalAmount }}</td>

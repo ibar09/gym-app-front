@@ -64,7 +64,7 @@ export class UseraccountComponent implements OnInit{
       (res)=> {this.orders=res;
       }
     )
-    
+  
   }
   
   navigateTo(section: 'profileSettings' | 'orders' | 'trainingProgram'): void {
@@ -96,20 +96,7 @@ export class UseraccountComponent implements OnInit{
     this.app.logOut();
     this.router.navigate(['']);
   }
-  //order example:
-  // orders = [
-  //   {
-  //     orderID: 'order45754',
-  //     items: [
-  //       { quantity: 1, name: 'Protein Power' },
-  //       { quantity: 2, name: 'Creatine' }
-  //     ],
-  //     amount: '756dt',
-  //     date: '22-2024-1'
-  //   },
-  //   // Add more orders as needed
-  // ];
-  // Example data for training program
+ 
   trainingProgram = [
     { date: '1-22-2024', exercise: ['Squats','push ups'] },
     { date: '1-23-2024', exercise: 'Push-ups' },

@@ -29,6 +29,7 @@ import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.compo
 
 import { ToastrModule } from 'ngx-toastr';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CoachDetailsComponent } from './coach-details/coach-details.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     TrainerListComponent,
     CoachDashboardComponent,
     ProductDetailsComponent,
+    CoachDetailsComponent,
     
   ],
   imports: [
