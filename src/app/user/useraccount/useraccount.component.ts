@@ -150,16 +150,45 @@ onSubmit() {
 openModal() {
 this.display = "block";
 }
+
 onCloseHandled() {
 this.display = "none";
 }
-ChargeAccount()
-{
+
+ChargeAccount() {
   const updatedSolde = this.user.solde +this.rechargeAmount;
 
   this.user.solde = updatedSolde;
   this.userService.updateUser((this.user as any).id,this.user).subscribe();
   this.onCloseHandled();
 }
+UpdateUser() { 
+  const updatedUser: User = {
+    id: this.user.id,
+    name: this.user.name,
+    lastName: this.user.lastName,
+    age: this.user.age,
+    email: this.user.email,
+    phoneNumber: this.user.phoneNumber,
+    address: this.user.address,
+    password: this.user.password,
+    solde: this.user.solde,
+    image: this.user.image,
+    orders: this.user.orders
+    // Include any other properties you want to update
+  };
+
+  this.userService.updateUser((this.user as any).id, updatedUser).subscribe(
+    (updatedUser) => {
+      console.log('User updated successfully', updatedUser);
+    },
+    (error) => {
+      console.error('Error updating user', error);
+      // Handle error if needed
+    }
+  );
+}
+
+
 
 }

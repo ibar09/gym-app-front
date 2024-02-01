@@ -27,21 +27,21 @@
         <a  class="recharge-link red-text" (click)="onSubmit()">Recharge Your Account</a>
       </div>
       
-      <!-- Modaal-->
+<!-- Modaal-->
 <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                    <div class="modal-header">
-                          <h4 class="modal-title">Amount to Recharge : </h4>
-                          <input type="number" id="amount">
-                          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-                    </div>
-               
-                    <div class="modal-footer">
-                          <button type="button " class="btn btn-danger" (click)="onCloseHandled()">Charge My Account</button>
-                    </div>
-              </div>
-        </div>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+              <div class="modal-header">
+                    <h4 class="modal-title">Amount to Recharge : </h4>
+                    <input type="number" id="amount"[(ngModel)]="rechargeAmount">
+                    <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                  </div>
+         
+              <div class="modal-footer">
+                    <button type="button " class="btn btn-danger" (click)="ChargeAccount()">Charge My Account</button>
+                  </div>
+     </div>
+  </div>
 </div>
 
 

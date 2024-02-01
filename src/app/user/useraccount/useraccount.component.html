@@ -59,9 +59,9 @@
     
       <form>
         <div class="form-group">
-        <img src="assets/avatar.png" alt="Profile Image" class="profile-image2">
+        <img [src]="imageUrl" alt="Profile Image" class="profile-image2">
         <label for="profilePhoto" class="text-white text-center fw-bold">Change your profile picture:</label>
-        <input type="file" id="profilePhoto" class="form-control-file">
+        <input type="file" (change)="onFileSelected($event)" id="profilePhoto" class="form-control-file">
       </div>
         <div class="form-group">
           <label for="firstName" class="text-white text-center fw-bold">First Name:</label>
@@ -135,7 +135,7 @@
         </div>
   
         <!-- Save Button -->
-        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-primary" (onclick)="UpdateUser()">Save</button>
       </form>
     </div>
   </div>
