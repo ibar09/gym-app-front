@@ -6,6 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import 'ngx-toastr/toastr';
 .red-text {
     color: #ff0000;
   }

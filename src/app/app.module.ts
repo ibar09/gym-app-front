@@ -44,7 +44,6 @@ import { OrderschartComponent } from '../adminPanel/orderschart/orderschart.comp
 import { DashboardschartComponent } from '../adminPanel/dashboardschart/dashboardschart.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CoachDashboardComponent } from './coach-dashboard/coach-dashboard.component';
-
 import { ToastrModule } from 'ngx-toastr';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CoachDetailsComponent } from './coach-details/coach-details.component';
@@ -90,7 +89,7 @@ import { CartModule } from './cart/cart.module';
     FontAwesomeModule,
     NgbModule,
     CartModule,
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
         MatSidenavModule,
         MatToolbarModule,
