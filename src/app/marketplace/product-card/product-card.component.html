@@ -2,7 +2,7 @@
 <div   class="card item cursor-pointer" >
   <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
   <div class="img-box" (click)="viewDetails()">
-    <img class="card-img-top" src="assets\product.jpg" alt="Card image cap">
+    <img class="card-img-top" [src]="product.photo" alt="Card image cap">
   </div>
     <div class="card-body">
       <h5 class="card-title" (click)="viewDetails()">{{product.name}}</h5>

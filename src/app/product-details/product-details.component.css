@@ -12,20 +12,20 @@
   }
   
   .product-image {
-    max-width: 50%;
+    max-width: 100%;
     
     margin-top: 20px; /* Add margin to separate image and info */
   }
   
   .product-image img {
-    width: 80%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .product-info {
-    max-width: 100%;
+    max-width: 50%;
     margin-left: 20px;
     
 
@@ -39,7 +39,7 @@
   p {
     color: #000000;
     margin-bottom: 10px;
-    font-size: 8mm;
+  
   }
   
   button {

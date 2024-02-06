@@ -2,7 +2,7 @@
 
 <div class="product-details-container" *ngIf="product">
     <div class="product-image">
-      <img src="assets\product.jpg" alt="Product Image">
+      <img [src]="product.photo" alt="Product Image">
     </div>
     <div class="product-info">
       <h2 class="red-text fw-bolder">{{ product.name }}</h2>
